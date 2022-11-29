@@ -21,15 +21,6 @@ return new class extends Migration
             $table->longText('translation');
             $table->string('sheet_music');
             $table->string('full_song');
-            $table->string('solo_song');
-            $table->string('high_1_song');
-            $table->string('high_2_song');
-            $table->string('high_mid_1_song');
-            $table->string('high_mid_2_song');
-            $table->string('low_mid_1_song');
-            $table->string('low_mid_2_song');
-            $table->string('low_1_song');
-            $table->string('low_2_song');
             $table->string('image');
         });
     }
