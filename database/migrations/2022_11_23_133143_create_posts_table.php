@@ -21,6 +21,7 @@ return new class extends Migration
             $table->date('date');
             $table->longText('file');
             $table->boolean('comments');
+            $table->timestamps();
         });
     }
 
