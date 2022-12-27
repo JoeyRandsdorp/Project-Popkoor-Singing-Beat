@@ -19,9 +19,10 @@ return new class extends Migration
             $table->string('lastname');
             $table->string('password');
             $table->string('email')->unique();
-            $table->bigInteger('phone');
+            $table->bigInteger('phone')->unique();
             $table->boolean('admin_role');
             $table->boolean('post_role');
+            $table->timestamps();
         });
     }
 
