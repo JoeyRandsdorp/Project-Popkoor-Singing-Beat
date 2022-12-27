@@ -15,7 +15,6 @@
                     @endif
                     <a href="{{route('posts.index')}}">Bekijk alle berichten</a>
                     <br><br>
-                    <a href="{{route('posts.create')}}">Maak een nieuw bericht</a>
                 </div>
             </div>
         </div>
