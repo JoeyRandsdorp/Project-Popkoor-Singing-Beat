@@ -23,12 +23,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('/posts', \App\Http\Controllers\PostController::class);
 
 //People who can post access only
-Route::get('posts/create', [\App\Http\Controllers\PostController::class, 'create'])->middleware('post_role');
-Route::get('posts/edit', [\App\Http\Controllers\PostController::class, 'edit'])->middleware('post_role');
-Route::get('posts/delete', [\App\Http\Controllers\PostController::class, 'delete'])->middleware('post_role');
-
-//Admin access only
-
+Route::get('posts/create', [\App\Http\Controllers\PostController::class, 'create'])->middleware('admin');
+Route::get('posts/edit', [\App\Http\Controllers\PostController::class, 'edit'])->middleware('admin');
+Route::get('posts/delete', [\App\Http\Controllers\PostController::class, 'delete'])->middleware('admin');
 
 //Routes for login, register
 Auth::routes();
