@@ -13,15 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//All access routes
 Route::get('/', function () {
     return view('welcome');
 });
 
+//Member access only
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/posts', \App\Http\Controllers\PostController::class);
 
+//Admin access only
 Route::get('posts/create', [\App\Http\Controllers\PostController::class, 'create'])->middleware('admin');
 Route::get('posts/edit', [\App\Http\Controllers\PostController::class, 'edit'])->middleware('admin');
 Route::get('posts/delete', [\App\Http\Controllers\PostController::class, 'delete'])->middleware('admin');
 
+//Routes for login, register
 Auth::routes();

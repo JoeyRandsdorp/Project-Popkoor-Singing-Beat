@@ -14,7 +14,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::query()
+            ->orderByRaw('pinned DESC, created_at DESC')
+            ->get();
         return view('posts', ['posts' => $posts]);
     }
 
@@ -90,6 +92,7 @@ class PostController extends Controller
         $post->date = $request->get('date');
         $post->file = $request->get('file');
         $post->comments = $request->get('comments');
+        $post->pinned = $request->get('pinned');
         $post->save();
         return redirect()->route('posts.index');
     }

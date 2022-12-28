@@ -71,13 +71,8 @@
                             <label for="admin" class="col-md-4 col-form-label text-md-end">{{ __('Admin') }}</label>
 
                             <div class="col-md-6">
-                                <input id="admin" type="number" class="form-control @error('admin') is-invalid @enderror" name="admin" value="{{ old('admin') }}" required autocomplete="admin">
-
-                                @error('admin')
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input id="admin" type="hidden" name="admin" value="0">
+                                <input id="admin" type="checkbox" name="admin" value="1">
                             </div>
                         </div>
 
@@ -85,13 +80,8 @@
                             <label for="post" class="col-md-4 col-form-label text-md-end">{{ __('Post') }}</label>
 
                             <div class="col-md-6">
-                                <input id="post" type="number" class="form-control @error('post') is-invalid @enderror" name="post" value="{{ old('post') }}" required autocomplete="post">
-
-                                @error('post')
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input id="post" type="hidden" name="post" value="0">
+                                <input id="post" type="checkbox" name="post" value="1">
                             </div>
                         </div>
 

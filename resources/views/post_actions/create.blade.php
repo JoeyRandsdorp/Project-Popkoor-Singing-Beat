@@ -40,14 +40,19 @@
                 </div>
                 <div>
                     <label for="comments" class="form-label">Comments aan- of uitzetten</label>
-                    <input id="comments"
-                           type="number"
-                           name="comments"
-                           class="@error('comments') is-invalid @enderror form-control"
-                           value="{{old('comments')}}"/>
-                    @error('comments')
-                    <span>{{$message}}</span>
-                    @enderror
+
+                    <div class="col-md-6">
+                        <input id="comments" type="hidden" name="comments" value="0">
+                        <input id="comments" type="checkbox" name="comments" value="1">
+                    </div>
+                </div>
+                <div>
+                    <label for="pinned" class="form-label">Zet bericht bovenaan vast</label>
+
+                    <div class="col-md-6">
+                        <input id="pinned" type="hidden" name="pinned" value="0">
+                        <input id="pinned" type="checkbox" name="pinned" value="1">
+                    </div>
                 </div>
                 <div>
                     <input id="date" type="hidden" name="date" value="<?php echo date("Y-m-d") ?>">

@@ -15,5 +15,6 @@ class Post extends Model
         'date',
         'file',
         'comments',
+        'pinned',
     ];
 }
