@@ -23,7 +23,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('/posts', \App\Http\Controllers\PostController::class);
 
 //People who can post access only
-Route::resource('/admin/posts', \App\Http\Controllers\AdminPostController::class)->middleware('admin')->middleware('post_role');
+Route::resource('/admin/posts', \App\Http\Controllers\AdminPostController::class)->middleware('post_role')->middleware('admin');
 
 //Routes for login, register
 Auth::routes();
