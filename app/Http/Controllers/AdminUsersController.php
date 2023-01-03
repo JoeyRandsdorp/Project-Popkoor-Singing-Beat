@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class AdminUsersController extends Controller
 {
@@ -12,6 +13,36 @@ class AdminUsersController extends Controller
             ->orderByRaw('name ASC')
             ->get();
         return view('admin_users.users', ['users' => $users]);
+    }
+
+    public function create()
+    {
+        $users = User::all();
+        return view('admin_users.create');
+    }
+
+    public function store(Request $request)
+    {
+        if($request['password'] === $request['password-confirm']){
+            $request->validate([
+                'name' => 'required', 'string', 'max:255',
+                'lastname' => 'required', 'string', 'max:255',
+                'password' => 'required', 'string', 'min:8', 'confirmed',
+                'email' => 'required', 'string', 'email', 'max:255', 'unique:users',
+                'phone' => 'required', 'string', 'max:15', 'unique:users'
+            ]);
+            User::create([
+                'name' => $request['name'],
+                'lastname' => $request['lastname'],
+                'password' => Hash::make($request['password']),
+                'email' => $request['email'],
+                'phone' => $request['phone'],
+                'admin_role' => $request['admin'],
+                'post_role' => $request['post']
+            ]);
+            return redirect()->route('users.index');
+        }
+        return view('admin_users.create');
     }
 
     public function edit($id)
