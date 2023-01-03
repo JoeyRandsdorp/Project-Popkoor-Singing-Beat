@@ -25,5 +25,8 @@ Route::resource('/posts', \App\Http\Controllers\PostController::class);
 //People who can post access only
 Route::resource('/admin/posts', \App\Http\Controllers\AdminPostController::class)->middleware('post_role')->middleware('admin');
 
+//Admin access only
+Route::resource('/admin/users', \App\Http\Controllers\AdminUsersController::class)->middleware('admin');
+
 //Routes for login, register
 Auth::routes();
