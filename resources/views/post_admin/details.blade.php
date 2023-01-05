@@ -11,6 +11,9 @@
                     <div class="card-text">
                         <p>{{$post->description}}</p>
                     </div>
+                    <div class="card-image">
+                        <img src="{{ asset('storage/'. $post->thumbnail) }}" alt="">
+                    </div>
                     <div>
                         <div class="col">
                             <a href="{{route('posts.edit', $post->id)}}" class="btn btn-success">Bewerken</a>

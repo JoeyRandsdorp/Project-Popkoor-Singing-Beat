@@ -8,6 +8,9 @@
                     <h1>{{$post->title}}</h1>
                 </div>
                 <div class="card-body">
+                    <div class="card-image">
+                        <img src="{{ asset('storage/'. $post->thumbnail) }}" alt="">
+                    </div>
                     <div class="card-text">
                         <p>{{$post->description}}</p>
                     </div>

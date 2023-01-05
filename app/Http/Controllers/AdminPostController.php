@@ -41,6 +41,7 @@ class AdminPostController extends Controller
     {
         $path = request()->file('thumbnail')->store('thumbnails');
 
+
         $request->validate([
             'title' => 'required', 'string', 'max:255',
             'description' => 'required', 'string', 'max:255',
@@ -48,12 +49,12 @@ class AdminPostController extends Controller
         ]);
 
         $request['user_id'] = auth()->id();
-        $request['thumbnail'] = $path;
+//        $request['thumbnail'] === $path;
 
         Post::create([
             'title' => $request['title'],
             'user_id' => $request ['user_id'],
-            'thumbnail' => $request['thumbnail'],
+            'thumbnail' => $path,
             'description' => $request['description'],
             'file' => $request['file'],
             'date' => $request['date'],
