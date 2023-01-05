@@ -8,6 +8,9 @@
                     <div class="col-mb-3">
                         <div class="card">
                             <div class="card-body">
+                                <div class="card-image">
+                                    <img src="{{ asset('storage/'. $post->thumbnail) }}" alt="">
+                                </div>
                                 <div class="card-title">
                                     <h4>{{$post->title}}</h4>
                                 </div>

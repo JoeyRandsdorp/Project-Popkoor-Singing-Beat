@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->string('title');
             $table->longText('description');
+            $table->string('thumbnail')->nullable();
             $table->date('date');
             $table->longText('file');
             $table->boolean('comments');

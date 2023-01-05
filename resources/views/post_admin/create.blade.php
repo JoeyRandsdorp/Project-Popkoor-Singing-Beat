@@ -3,7 +3,7 @@
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <form action="{{route('posts.store')}}" method="post">
+            <form action="{{route('posts.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div>
                     <label for="title" class="form-label">Titel bericht</label>
@@ -35,6 +35,17 @@
                            class="@error('file') is-invalid @enderror form-control"
                            value="{{old('file')}}"/>
                     @error('file')
+                    <span>{{$message}}</span>
+                    @enderror
+                </div>
+                <div>
+                    <label for="thumbnail" class="form-label">Afbeelding toevoegen</label>
+                    <input id="thumbnail"
+                           type="file"
+                           name="thumbnail"
+                           class="@error('thumbnail') is-invalid @enderror form-control"
+                           value="{{old('thumbnail')}}"/>
+                    @error('thumbnail')
                     <span>{{$message}}</span>
                     @enderror
                 </div>

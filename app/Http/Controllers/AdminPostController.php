@@ -40,12 +40,60 @@ class AdminPostController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'file' => 'required|string|max:255'
+            'title' => 'required', 'string', 'max:255',
+            'thumbnail' => 'required',
+            'description' => 'required', 'string', 'max:255',
+            'file' => 'required',
+            'date' => 'required', 'string',
+            'comments' => 'required', 'integer',
+            'pinned' => 'required', 'integer'
+
         ]);
-        Post::create($request->all());
+
+        $request['user_id'] = auth()->id();
+        $request['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
+
+        Post::create([
+            'title' => $request['title'],
+            'user_id' => $request ['user_id'],
+            'thumbnail' => $request['thumbnail'],
+            'description' => $request['description'],
+            'file' => $request['file'],
+            'date' => $request['date'],
+            'comments' => $request['comments'],
+            'pinned' => $request['pinned']
+        ]);
+
+//        $attributes = request()->validate([
+//            'title' => 'required|string|max:255',
+//            'thumbnail' => 'image',
+//            'description' => 'required|string',
+//            'file' => 'required|string|max:255',
+//            'date' => 'required|integer',
+//            'comments' => 'required|integer',
+//            'pinned' => 'required|integer'
+//        ]);
+//
+//        $attributes['user_id'] = auth()->id();
+//        $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
+//
+////        Post::create($attributes);
+//
+//        Post::create([
+//            'user_id' => $attributes['user_id'],
+//            'title' => $attributes['title'],
+//            'thumbnail' => $attributes['thumbnail'],
+//            'description' => $attributes['description'],
+//            'file' => $attributes['file'],
+//            'date' => $attributes['date'],
+//            'comments' => $attributes['comments'],
+//            'pinned' => $attributes['pinned'],
+//        ]);
+
+
+
         return redirect()->route('posts.index');
+
     }
 
     /**
