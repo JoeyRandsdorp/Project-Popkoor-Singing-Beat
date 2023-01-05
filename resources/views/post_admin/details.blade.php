@@ -15,6 +15,14 @@
                         <img style="width: 50%;" src="{{ asset('storage/'. $post->thumbnail) }}" alt="">
                     </div>
                     <div>
+                        <div>
+                            <embed src="{{ asset('storage/'. $post->file) }}">
+                        </div>
+                        <div>
+                            <video width="320" height="240" controls>
+                                <source src="{{ asset('storage/'. $post->video) }}">
+                            </video>
+                        </div>
                         <div class="col">
                             <a href="{{route('posts.edit', $post->id)}}" class="btn btn-success">Bewerken</a>
                         </div>

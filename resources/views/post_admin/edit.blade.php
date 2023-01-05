@@ -29,17 +29,6 @@
                     @enderror
                 </div>
                 <div>
-                    <label for="file" class="form-label">Bestand</label>
-                    <input id="file"
-                           type="text"
-                           name="file"
-                           class="@error('file') is-invalid @enderror form-control"
-                           value="{{$post->file}}"/>
-                    @error('file')
-                    <span>{{$message}}</span>
-                    @enderror
-                </div>
-                <div>
                     <label for="comments" class="form-label">Comments aan- of uitzetten</label>
 
                     <div class="col-md-6">

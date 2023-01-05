@@ -13,6 +13,7 @@ class Post extends Model
         'title',
         'description',
         'thumbnail',
+        'video',
         'date',
         'file',
         'comments',

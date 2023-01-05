@@ -28,9 +28,9 @@
                     @enderror
                 </div>
                 <div>
-                    <label for="file" class="form-label">Bestand</label>
+                    <label for="file" class="form-label">Bestand (zoals een excel-bestand)</label>
                     <input id="file"
-                           type="text"
+                           type="file"
                            name="file"
                            class="@error('file') is-invalid @enderror form-control"
                            value="{{old('file')}}"/>
@@ -46,6 +46,17 @@
                            class="@error('thumbnail') is-invalid @enderror form-control"
                            value="{{old('thumbnail')}}"/>
                     @error('thumbnail')
+                    <span>{{$message}}</span>
+                    @enderror
+                </div>
+                <div>
+                    <label for="video" class="form-label">Video toevoegen</label>
+                    <input id="video"
+                           type="file"
+                           name="video"
+                           class="@error('video') is-invalid @enderror form-control"
+                           value="{{old('video')}}"/>
+                    @error('video')
                     <span>{{$message}}</span>
                     @enderror
                 </div>

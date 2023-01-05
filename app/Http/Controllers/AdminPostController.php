@@ -41,57 +41,30 @@ class AdminPostController extends Controller
     public function store(Request $request)
     {
         $path = request()->file('thumbnail')->store('thumbnails');
-
+        $file_path = request()->file('file')->store('files');
+        $video_path = request()->file('video')->store('videos');
 
         $request->validate([
             'title' => 'required', 'string', 'max:255',
             'description' => 'required', 'string', 'max:255',
-            'thumbnail' => File::types(['gif', 'GIF', 'jpeg', 'JPEG', 'jpg', 'JPG', 'png', 'PNG'])
+            'thumbnail' => File::types(['gif', 'GIF', 'jpeg', 'JPEG', 'jpg', 'JPG', 'png', 'PNG']),
+            'file' => File::types(['mp3', 'docx', 'pdf', 'doc', 'xls', 'xlsx', 'txt', 'wav', 'ppt', 'pptx']),
+            'video' => File::types(['mp4', 'avi', 'mov', 'flv', 'avchd', 'mkv', 'mpeg'])
         ]);
-
-        $request['user_id'] = auth()->id();
 
         Post::create([
             'title' => $request['title'],
             'user_id' => $request ['user_id'],
             'thumbnail' => $path,
             'description' => $request['description'],
-            'file' => $request['file'],
+            'file' => $file_path,
+            'video' => $video_path,
             'date' => $request['date'],
             'comments' => $request['comments'],
             'pinned' => $request['pinned']
         ]);
 
-//        $attributes = request()->validate([
-//            'title' => 'required|string|max:255',
-//            'thumbnail' => 'image',
-//            'description' => 'required|string',
-//            'file' => 'required|string|max:255',
-//            'date' => 'required|integer',
-//            'comments' => 'required|integer',
-//            'pinned' => 'required|integer'
-//        ]);
-//
-//        $attributes['user_id'] = auth()->id();
-//        $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
-//
-////        Post::create($attributes);
-//
-//        Post::create([
-//            'user_id' => $attributes['user_id'],
-//            'title' => $attributes['title'],
-//            'thumbnail' => $attributes['thumbnail'],
-//            'description' => $attributes['description'],
-//            'file' => $attributes['file'],
-//            'date' => $attributes['date'],
-//            'comments' => $attributes['comments'],
-//            'pinned' => $attributes['pinned'],
-//        ]);
-
-
-
         return redirect()->route('posts.index');
-
     }
 
     /**
@@ -128,15 +101,13 @@ class AdminPostController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'file' => 'required|string|max:255'
+            'description' => 'required|string'
         ]);
         $post = Post::find($id);
         $post->user_id = $request->get('user_id');
         $post->title = $request->get('title');
         $post->description = $request->get('description');
         $post->date = $request->get('date');
-        $post->file = $request->get('file');
         $post->comments = $request->get('comments');
         $post->pinned = $request->get('pinned');
         $post->save();

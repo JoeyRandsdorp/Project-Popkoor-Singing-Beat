@@ -20,7 +20,8 @@ return new class extends Migration
             $table->longText('description');
             $table->longText('thumbnail')->nullable();
             $table->date('date');
-            $table->longText('file');
+            $table->longText('file')->nullable();
+            $table->longText('video')->nullable();
             $table->boolean('comments');
             $table->boolean('pinned');
             $table->timestamps();
