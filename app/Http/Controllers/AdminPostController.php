@@ -39,19 +39,16 @@ class AdminPostController extends Controller
      */
     public function store(Request $request)
     {
+        $path = request()->file('thumbnail')->store('thumbnails');
+
         $request->validate([
             'title' => 'required', 'string', 'max:255',
-            'thumbnail' => 'required',
             'description' => 'required', 'string', 'max:255',
-            'file' => 'required',
-            'date' => 'required', 'string',
-            'comments' => 'required', 'integer',
-            'pinned' => 'required', 'integer'
-
+            'thumbnail' => 'image'
         ]);
 
         $request['user_id'] = auth()->id();
-        $request['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
+        $request['thumbnail'] = $path;
 
         Post::create([
             'title' => $request['title'],
