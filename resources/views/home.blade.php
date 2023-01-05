@@ -13,8 +13,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <a href="{{route('posts.index')}}">Bekijk alle berichten</a>
-                    <br><br>
+                    @if (auth()->user()?->admin_role !== 1)
+                    <a href="/posts">Bekijk alle berichten</a>
+                    @else
+                    <a href="/admin/posts">Bekijk alle berichten</a>
+                    @endif
                 </div>
             </div>
         </div>

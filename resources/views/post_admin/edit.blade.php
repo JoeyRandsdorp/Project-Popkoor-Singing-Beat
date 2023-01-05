@@ -44,14 +44,11 @@
 
                     <div class="col-md-6">
                         <input id="comments" type="hidden" name="comments" value="0">
-                        @guest
                         @if ($post->comments === 0)
                             <input id="comments" type="checkbox" name="comments" value="1">
-                        @endif
-
                         @else
                             <input id="comments" type="checkbox" name="comments" value="1" checked>
-                        @endguest
+                        @endif
                     </div>
                 </div>
                 <div>
@@ -59,14 +56,11 @@
 
                     <div class="col-md-6">
                         <input id="pinned" type="hidden" name="pinned" value="0">
-                        @guest
                         @if ($post->pinned === 0)
                             <input id="pinned" type="checkbox" name="pinned" value="1">
-                        @endif
-
                         @else
                             <input id="pinned" type="checkbox" name="pinned" value="1" checked>
-                        @endguest
+                        @endif
                     </div>
                 </div>
                 <div>

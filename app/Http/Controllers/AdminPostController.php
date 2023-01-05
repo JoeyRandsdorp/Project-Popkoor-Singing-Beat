@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Validation\Rules\File;
 use Illuminate\Http\Request;
 use App\Models\Post;
 
@@ -45,11 +46,10 @@ class AdminPostController extends Controller
         $request->validate([
             'title' => 'required', 'string', 'max:255',
             'description' => 'required', 'string', 'max:255',
-            'thumbnail' => 'image'
+            'thumbnail' => File::types(['gif', 'jpeg', 'jpg', 'png'])
         ]);
 
         $request['user_id'] = auth()->id();
-//        $request['thumbnail'] === $path;
 
         Post::create([
             'title' => $request['title'],

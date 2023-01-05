@@ -54,15 +54,12 @@
                     <label for="admin" class="form-label">Adminrol aan- of uitzetten</label>
 
                     <div class="col-md-6">
-                        <input id="admin" type="hidden" name="admin" value="0">
-                        @guest
-                            @if ($user->admin_role === 0)
-                                <input id="admin" type="checkbox" name="admin" value="1">
-                            @endif
-
+                        <input id="admin" type="hidden" name="admin" value="0">\
+                        @if ($user->admin_role === 0)
+                            <input id="admin" type="checkbox" name="admin" value="1">
                         @else
                             <input id="admin" type="checkbox" name="admin" value="1" checked>
-                        @endguest
+                        @endif
                     </div>
                 </div>
                 <div>
@@ -70,14 +67,11 @@
 
                     <div class="col-md-6">
                         <input id="post" type="hidden" name="post" value="0">
-                        @guest
-                            @if ($user->post_role === 0)
-                                <input id="post" type="checkbox" name="post" value="1">
-                            @endif
-
+                        @if ($user->post_role === 0)
+                            <input id="post" type="checkbox" name="post" value="1">
                         @else
                             <input id="post" type="checkbox" name="post" value="1" checked>
-                        @endguest
+                        @endif
                     </div>
                 </div>
                 <div>
