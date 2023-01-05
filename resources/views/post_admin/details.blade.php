@@ -12,7 +12,7 @@
                         <p>{{$post->description}}</p>
                     </div>
                     <div class="card-image">
-                        <img src="{{ asset('storage/'. $post->thumbnail) }}" alt="">
+                        <img style="width: 50%;" src="{{ asset('storage/'. $post->thumbnail) }}" alt="">
                     </div>
                     <div>
                         <div class="col">

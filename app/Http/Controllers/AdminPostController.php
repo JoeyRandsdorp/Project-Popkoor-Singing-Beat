@@ -46,7 +46,7 @@ class AdminPostController extends Controller
         $request->validate([
             'title' => 'required', 'string', 'max:255',
             'description' => 'required', 'string', 'max:255',
-            'thumbnail' => File::types(['gif', 'jpeg', 'jpg', 'png'])
+            'thumbnail' => File::types(['gif', 'GIF', 'jpeg', 'JPEG', 'jpg', 'JPG', 'png', 'PNG'])
         ]);
 
         $request['user_id'] = auth()->id();

@@ -9,7 +9,7 @@
                 </div>
                 <div class="card-body">
                     <div class="card-image">
-                        <img src="{{ asset('storage/'. $post->thumbnail) }}" alt="">
+                        <img style="width: 50%;" src="{{ asset('storage/'. $post->thumbnail) }}" alt="">
                     </div>
                     <div class="card-text">
                         <p>{{$post->description}}</p>
