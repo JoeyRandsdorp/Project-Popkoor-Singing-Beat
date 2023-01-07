@@ -31,6 +31,33 @@
                     </div>
                     <br>
                     <div>
+                        <table class="table-bordered" style="width: 100%;">
+                            <tr>
+                                <th>Stempartij</th>
+                                <th>Afspelen</th>
+                                <th>Verwijder Stempartij</th>
+                            </tr>
+                            @foreach($voice_parts as $voice_part)
+                                <tr>
+                                    <th>{{$voice_part->title}}</th>
+                                    <th>
+                                        <audio controls style="width: 100%;">
+                                            <source src="{{ asset('storage/' . $voice_part->sound) }}" type="audio/mpeg">
+                                        </audio>
+                                    </th>
+                                    <th>
+                                        <form action="{{route('voice_parts.destroy', $voice_part->id)}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger btn-sm" type="submit">Verwijder</button>
+                                        </form>
+                                    </th>
+                                </tr>
+                            @endforeach
+                        </table>
+                    </div>
+                    <br>
+                    <div>
                         <a href="{{route('voice_parts.create', "id=" . $song->id)}}">Voeg een stempartij toe</a>
                     </div>
                     <br>

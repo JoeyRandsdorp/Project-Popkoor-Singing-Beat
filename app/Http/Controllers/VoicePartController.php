@@ -31,4 +31,11 @@ class VoicePartController extends Controller
 
         return redirect()->route('songs.index');
     }
+
+    public function destroy($id)
+    {
+        $voice_part = VoicePart::find($id);
+        $voice_part->delete();
+        return redirect()->route('songs.index');
+    }
 }

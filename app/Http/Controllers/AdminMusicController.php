@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\File;
 use App\Models\Song;
+use App\Models\VoicePart;
 
 class AdminMusicController extends Controller
 {
@@ -54,10 +56,18 @@ class AdminMusicController extends Controller
         return redirect()->route('songs.index');
     }
 
+    public function getVoiceParts($id)
+    {
+        $voice_parts = DB::table('voice_parts')->where('song_id', '=', $id)->get();
+        return $voice_parts;
+    }
+
     public function show($id)
     {
         $song = Song::find($id);
-        return view('admin_songs.details', ['song' => $song]);
+        $voice_parts = $this->getVoiceParts($id);
+
+        return view('admin_songs.details', ['song' => $song], ['voice_parts' => $voice_parts]);
     }
 
     public function edit($id)

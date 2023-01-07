@@ -29,6 +29,25 @@
                     <div>
                         <embed src="{{ asset('storage/' . $song->sheet_music) }}">
                     </div>
+                    <br>
+                    <div>
+                        <table class="table-bordered" style="width: 100%;">
+                            <tr>
+                                <th>Stempartij</th>
+                                <th>Afspelen</th>
+                            </tr>
+                            @foreach($voice_parts as $voice_part)
+                                <tr>
+                                    <th>{{$voice_part->title}}</th>
+                                    <th>
+                                        <audio controls style="width: 100%;">
+                                            <source src="{{ asset('storage/' . $voice_part->sound) }}" type="audio/mpeg">
+                                        </audio>
+                                    </th>
+                                </tr>
+                            @endforeach
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
