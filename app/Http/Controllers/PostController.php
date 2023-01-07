@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -20,6 +22,12 @@ class PostController extends Controller
         return view('post_user.posts', ['posts' => $posts]);
     }
 
+    public function comments($id)
+    {
+        $comments = DB::table('comments')->where('post_id', '=', $id)->get();
+        return $comments;
+    }
+
     /**
      * Display the specified resource.
      *
@@ -28,6 +36,12 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        return view('post_user.details', ['post' => Post::find($id)]);
+        $post = Post::find($id);
+        if($post['comments'] === 1){
+            $comments = $this->comments($id);
+            return view('post_user.details_comments', ['post' => Post::find($id)], ['comments' => $comments]);
+        } else {
+            return view('post_user.details', ['post' => Post::find($id)]);
+        }
     }
 }

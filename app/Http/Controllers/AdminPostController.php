@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\File;
 use Illuminate\Http\Request;
 use App\Models\Post;
@@ -67,6 +68,12 @@ class AdminPostController extends Controller
         return redirect()->route('posts.index');
     }
 
+    public function comments($id)
+    {
+        $comments = DB::table('comments')->where('post_id', '=', $id)->get();
+        return $comments;
+    }
+
     /**
      * Display the specified resource.
      *
@@ -75,7 +82,13 @@ class AdminPostController extends Controller
      */
     public function show($id)
     {
-        return view('post_admin.details', ['post' => Post::find($id)]);
+        $post = Post::find($id);
+        if($post['comments'] === 1){
+            $comments = $this->comments($id);
+            return view('post_admin.details_comments', ['post' => Post::find($id)], ['comments' => $comments]);
+        } else {
+            return view('post_admin.details', ['post' => Post::find($id)]);
+        }
     }
 
     /**

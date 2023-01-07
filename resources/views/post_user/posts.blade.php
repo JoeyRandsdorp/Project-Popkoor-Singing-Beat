@@ -18,7 +18,7 @@
                                     <p>{{$post->description}}</p>
                                 </div>
                                 <div class="col">
-                                    <a href="{{route('posts.show', $post->id)}}" class="btn btn-success">Details</a>
+                                    <a href="/posts/{{$post->id}}" class="btn btn-success">Details</a>
                                 </div>
                             </div>
                         </div>
