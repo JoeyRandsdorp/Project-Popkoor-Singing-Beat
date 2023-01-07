@@ -19,9 +19,10 @@ Route::get('/', function () {
 });
 
 //Member access only
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('/posts', \App\Http\Controllers\PostController::class);
-Route::resource('/comments', \App\Http\Controllers\CommentController::class);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::resource('/posts', \App\Http\Controllers\PostController::class)->middleware('auth');
+Route::resource('/comments', \App\Http\Controllers\CommentController::class)->middleware('auth');
+Route::resource('/songs', \App\Http\Controllers\MusicController::class)->middleware('auth');
 
 //People who can post access only
 Route::resource('/admin/posts', \App\Http\Controllers\AdminPostController::class)->middleware('post_role')->middleware('admin');
