@@ -31,6 +31,10 @@
                     </div>
                     <br>
                     <div>
+                        <a href="{{route('voice_parts.create', "id=" . $song->id)}}">Voeg een stempartij toe</a>
+                    </div>
+                    <br>
+                    <div>
                         <a href="{{route('songs.edit', $song->id)}}" class="btn btn-success">Bewerken</a>
                     </div>
                     <br>

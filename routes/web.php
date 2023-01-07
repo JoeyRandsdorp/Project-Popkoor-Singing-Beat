@@ -30,6 +30,7 @@ Route::resource('/admin/posts', \App\Http\Controllers\AdminPostController::class
 //Admin access only
 Route::resource('/admin/users', \App\Http\Controllers\AdminUsersController::class)->middleware('admin');
 Route::resource('/admin/songs', \App\Http\Controllers\AdminMusicController::class)->middleware('admin');
+Route::resource('/admin/voice_parts', \App\Http\Controllers\VoicePartController::class)->middleware('admin');
 
 //Routes for login, register
 Auth::routes();

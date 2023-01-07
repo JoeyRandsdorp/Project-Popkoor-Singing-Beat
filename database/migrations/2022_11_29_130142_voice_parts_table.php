@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('song_id')->constrained('songs');
             $table->string('title');
-            $table->string('image');
+            $table->longText('sound')->nullable();
+            $table->timestamps();
         });
     }
 
