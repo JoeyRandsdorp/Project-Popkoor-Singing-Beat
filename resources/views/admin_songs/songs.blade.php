@@ -10,7 +10,7 @@
                         <th>Titel</th>
                         <th>Artiest</th>
                         <th>Details</th>
-                        <th>Aan-/uitzetten</th>
+                        <th>Zichtbaarheid</th>
                         <th>Verwijderen</th>
                     </tr>
                     @foreach($songs as $song)
@@ -18,7 +18,13 @@
                             <th>{{$song->title}}</th>
                             <th>{{$song->artist}}</th>
                             <th><a href="{{route('songs.show', $song->id)}}">Details</a></th>
-                            <th>Aan-/uitzetten</th>
+                            <th>
+                                @if($song->visibility === 1)
+                                    Zichtbaar
+                                @else
+                                    Onzichtbaar
+                                @endif
+                            </th>
                             <th>
                                 <form action="{{route('songs.destroy', $song->id)}}" method="post">
                                     @csrf

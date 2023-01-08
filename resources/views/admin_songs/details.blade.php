@@ -8,6 +8,13 @@
                     <h1>{{$song->artist}} - {{$song->title}}</h1>
                 </div>
                 <div class="card-body">
+                    <div>
+                        @if($song->visibility === 1)
+                            <p>Dit muzieknummer is zichtbaar voor leden</p>
+                        @else
+                            <p>Dit muzieknummer is onzichtbaar voor leden</p>
+                        @endif
+                    </div>
                     <div class="card-image">
                         <img style="width: 50%;" src="{{ asset('storage/'. $song->image) }}" alt="">
                     </div>

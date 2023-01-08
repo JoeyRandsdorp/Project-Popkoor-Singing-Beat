@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('full_song')->nullable();
             $table->string('image')->nullable();
             $table->date('date');
+            $table->boolean('visibility');
             $table->timestamps();
         });
     }

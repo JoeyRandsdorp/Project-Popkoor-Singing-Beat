@@ -29,6 +29,17 @@
                     @enderror
                 </div>
                 <div>
+                    <label for="visibility" class="form-label">Zichtbaarheid aanpassen</label>
+                    <div class="col-md-6">
+                        <input id="visibility" type="hidden" name="visibility" value="0">
+                        @if ($song->visibility === 0)
+                            <input id="visibility" type="checkbox" name="visibility" value="1">
+                        @else
+                            <input id="visibility" type="checkbox" name="visibility" value="1" checked>
+                        @endif
+                    </div>
+                </div>
+                <div>
                     <input type="submit" value="Wijzigingen opslaan">
                 </div>
             </form>

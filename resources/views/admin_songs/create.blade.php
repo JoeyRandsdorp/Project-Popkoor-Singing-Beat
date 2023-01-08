@@ -83,11 +83,18 @@
                     @enderror
                 </div>
                 <div>
+                    <label for="visibility" class="form-label">Zichtbaarheid (aanvinken betekent zichtbaar voor leden)</label>
+                    <div class="col-md-6">
+                        <input id="visibility" type="hidden" name="visibility" value="0">
+                        <input id="visibility" type="checkbox" name="visibility" value="1">
+                    </div>
+                </div>
+                <div>
                     <input id="date" type="hidden" name="date" value="<?php echo date("Y-m-d") ?>">
                 </div>
                 <br><br>
                 <div>
-                    <input type="submit" value="Plaats bericht">
+                    <input type="submit" value="Maak muzieknummer aan">
                 </div>
             </form>
         </div>

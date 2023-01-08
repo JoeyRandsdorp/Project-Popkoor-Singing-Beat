@@ -11,6 +11,7 @@ class MusicController extends Controller
     public function index()
     {
         $songs = Song::query()
+            ->where('visibility', '=', 1)
             ->orderByRaw('title ASC')
             ->get();
         return view('user_songs.songs', ['songs' => $songs]);
@@ -27,6 +28,14 @@ class MusicController extends Controller
         $song = Song::find($id);
         $voice_parts = $this->getVoiceParts($id);
 
-        return view('user_songs.details', ['song' => $song], ['voice_parts' => $voice_parts]);
+        if($song->visibility !== 1){
+            $songs = Song::query()
+                ->where('visibility', '=', 1)
+                ->orderByRaw('title ASC')
+                ->get();
+            return view('user_songs.songs', ['songs' => $songs]);
+        } else {
+            return view('user_songs.details', ['song' => $song], ['voice_parts' => $voice_parts]);
+        }
     }
 }

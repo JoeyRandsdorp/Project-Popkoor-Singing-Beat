@@ -50,7 +50,8 @@ class AdminMusicController extends Controller
             'sheet_music' => $sheet_music,
             'full_song' => $full_song,
             'image' => $image,
-            'date' => $request['date']
+            'date' => $request['date'],
+            'visibility' => $request['visibility']
         ]);
 
         return redirect()->route('songs.index');
@@ -85,6 +86,7 @@ class AdminMusicController extends Controller
         $song = Song::find($id);
         $song->title = $request->get('title');
         $song->artist = $request->get('artist');
+        $song->visibility = $request->get('visibility');
         $song->save();
         return redirect()->route('songs.index');
     }
