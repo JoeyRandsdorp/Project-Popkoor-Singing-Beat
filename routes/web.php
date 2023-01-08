@@ -23,6 +23,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('/posts', \App\Http\Controllers\PostController::class)->middleware('auth');
 Route::resource('/comments', \App\Http\Controllers\CommentController::class)->middleware('auth');
 Route::resource('/songs', \App\Http\Controllers\MusicController::class)->middleware('auth');
+Route::resource('/playlists', \App\Http\Controllers\PlaylistController::class)->middleware('auth');
 
 //People who can post access only
 Route::resource('/admin/posts', \App\Http\Controllers\AdminPostController::class)->middleware('post_role')->middleware('admin');
