@@ -10,12 +10,14 @@
                         <th>Titel</th>
                         <th>Artiest</th>
                         <th>Details</th>
+                        <th>Toevoegen aan afspeellijst</th>
                     </tr>
                     @foreach($songs as $song)
                         <tr>
                             <th>{{$song->title}}</th>
                             <th>{{$song->artist}}</th>
                             <th><a href="/songs/{{$song->id}}">Details</a></th>
+                            <th><a href="/playlist_song/create?id={{$song->id}}" class="btn btn-success">Voeg toe</a></th>
                         </tr>
                     @endforeach
                 </table>

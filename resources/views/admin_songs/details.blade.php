@@ -20,6 +20,12 @@
                     </div>
                     <br>
                     <div>
+                        <a href="/playlist_song/create?id={{$song->id}}" class="btn btn-success">
+                            Voeg muzieknummer toe aan afspeellijst
+                        </a>
+                    </div>
+                    <br>
+                    <div>
                         <audio controls style="width: 100%;">
                             <source src="{{ asset('storage/' . $song->full_song) }}" type="audio/mpeg">
                         </audio>

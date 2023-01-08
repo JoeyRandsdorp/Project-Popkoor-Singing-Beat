@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('playlist_song', function (Blueprint $table) {
+        Schema::create('playlist_songs', function (Blueprint $table) {
             $table->foreignId('playlist_id')->constrained('playlists');
             $table->foreignId('song_id')->constrained('songs');
             $table->timestamps();

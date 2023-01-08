@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\File;
 use App\Models\Song;
-use App\Models\VoicePart;
 
 class AdminMusicController extends Controller
 {
