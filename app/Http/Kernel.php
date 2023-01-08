@@ -4,6 +4,7 @@ namespace App\Http;
 
 use App\Http\Middleware\AdminOnly;
 use App\Http\Middleware\PostersOnly;
+use App\Http\Middleware\UserPlaylists;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel

@@ -41,14 +41,30 @@ class PlaylistController extends Controller
 
     public function show($id)
     {
+        $user_id = auth()->user()?->id;
+
         $playlist = Playlist::find($id);
-        return view('playlists.details', compact('playlist'));
+
+        if($user_id !== $playlist->user_id){
+            return redirect()->route('playlists.index');
+        }
+        else {
+            return view('playlists.details', compact('playlist'));
+        }
     }
 
     public function edit($id)
     {
+        $user_id = auth()->user()?->id;
+
         $playlist = Playlist::find($id);
-        return view('playlists.edit', compact('playlist'));
+
+        if($user_id !== $playlist->user_id){
+            return redirect()->route('playlists.index');
+        }
+        else {
+            return view('playlists.edit', compact('playlist'));
+        }
     }
 
     public function update(Request $request, $id)
@@ -57,16 +73,32 @@ class PlaylistController extends Controller
             'title' => 'required', 'string', 'max:255'
         ]);
 
+        $user_id = auth()->user()?->id;
+
         $playlist = Playlist::find($id);
-        $playlist->title = $request->get('title');
-        $playlist->save();
-        return redirect()->route('playlists.index');
+
+        if($user_id !== $playlist->user_id){
+            return redirect()->route('playlists.index');
+        }
+        else {
+            $playlist->title = $request->get('title');
+            $playlist->save();
+            return redirect()->route('playlists.index');
+        }
     }
 
     public function destroy($id)
     {
+        $user_id = auth()->user()?->id;
+
         $playlist = Playlist::find($id);
-        $playlist->delete();
-        return redirect()->route('playlists.index');
+
+        if($user_id !== $playlist->user_id){
+            return redirect()->route('playlists.index');
+        }
+        else {
+            $playlist->delete();
+            return redirect()->route('playlists.index');
+        }
     }
 }
