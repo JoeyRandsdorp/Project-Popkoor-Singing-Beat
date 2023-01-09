@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //All access routes
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [\App\Http\Controllers\WelcomePageController::class, 'index']);
 
 //Member access only
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
@@ -34,6 +32,7 @@ Route::resource('/admin/posts', \App\Http\Controllers\AdminPostController::class
 Route::resource('/admin/users', \App\Http\Controllers\AdminUsersController::class)->middleware('admin');
 Route::resource('/admin/songs', \App\Http\Controllers\AdminMusicController::class)->middleware('admin');
 Route::resource('/admin/voice_parts', \App\Http\Controllers\VoicePartController::class)->middleware('admin');
+Route::resource('admin/welcome', \App\Http\Controllers\AdminWelcomePageController::class)->middleware('admin');
 
 //Routes for login, register
 Auth::routes();

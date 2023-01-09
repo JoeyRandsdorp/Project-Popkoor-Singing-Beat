@@ -43,7 +43,7 @@ class AdminPostController extends Controller
     {
         $request->validate([
             'title' => 'required', 'string', 'max:255',
-            'description' => 'required', 'string', 'max:255',
+            'description' => 'required', 'string',
             'thumbnail' => 'required', File::types(['gif', 'GIF', 'jpeg', 'JPEG', 'jpg', 'JPG', 'png', 'PNG']),
             'file' => File::types(['mp3', 'pdf', 'txt']),
             'video' => File::types(['mp4', 'avi', 'mov', 'flv', 'avchd', 'mkv', 'mpeg'])
