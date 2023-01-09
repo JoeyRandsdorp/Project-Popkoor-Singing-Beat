@@ -28,16 +28,31 @@ class AdminMusicController extends Controller
         $request->validate([
             'title' => 'required', 'string', 'max:255',
             'artist' => 'required', 'string', 'max:255',
-            'lyrics' => 'required', File::types(['pdf', 'PDF']),
-            'translation' => 'required', File::types(['pdf', 'PDF']),
-            'sheet_music' => 'required', File::types(['pdf', 'PDF']),
+            'lyrics' => File::types(['pdf', 'PDF']),
+            'translation' => File::types(['pdf', 'PDF']),
+            'sheet_music' => File::types(['pdf', 'PDF']),
             'full_song' => 'required', File::types(['mp3', 'wav', 'aac', 'ogg', 'aiff', 'flac']),
             'image' => 'required', File::types(['gif', 'GIF', 'jpeg', 'JPEG', 'jpg', 'JPG', 'png', 'PNG'])
         ]);
 
-        $lyrics = request()->file('lyrics')->store('lyrics');
-        $translation = request()->file('translation')->store('translations');
-        $sheet_music = request()->file('sheet_music')->store('sheet_music');
+        if(request()->file('lyrics') === null){
+            $lyrics = null;
+        } else {
+            $lyrics = request()->file('lyrics')->store('lyrics');
+        }
+
+        if(request()->file('translation') === null){
+            $translation = null;
+        } else {
+            $translation = request()->file('translation')->store('translations');
+        }
+
+        if(request()->file('sheet_music') === null){
+            $sheet_music = null;
+        } else {
+            $sheet_music = request()->file('sheet_music')->store('sheet_music');
+        }
+
         $full_song = request()->file('full_song')->store('full_songs');
         $image = request()->file('image')->store('images');
 

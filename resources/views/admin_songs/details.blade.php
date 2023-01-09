@@ -31,17 +31,35 @@
                         </audio>
                     </div>
                     <br>
-                    <div>
-                        <embed src="{{ asset('storage/' . $song->lyrics) }}">
-                    </div>
+                    @if($song->lyrics === null)
+                        <div>
+                            <p>(Nog) geen songtekst beschikbaar</p>
+                        </div>
+                    @else
+                        <div>
+                            <embed src="{{ asset('storage/' . $song->lyrics) }}">
+                        </div>
+                    @endif
                     <br>
-                    <div>
-                        <embed src="{{ asset('storage/' . $song->translation) }}">
-                    </div>
+                    @if($song->translation === null)
+                        <div>
+                            <p>(Nog) geen songtekst vertaling beschikbaar</p>
+                        </div>
+                    @else
+                        <div>
+                            <embed src="{{ asset('storage/' . $song->translation) }}">
+                        </div>
+                    @endif
                     <br>
-                    <div>
-                        <embed src="{{ asset('storage/' . $song->sheet_music) }}">
-                    </div>
+                    @if($song->sheet_music === null)
+                        <div>
+                            <p>(Nog) geen bladmuziek beschikbaar</p>
+                        </div>
+                    @else
+                        <div>
+                            <embed src="{{ asset('storage/' . $song->sheet_music) }}">
+                        </div>
+                    @endif
                     <br>
                     <div>
                         <table class="table-bordered" style="width: 100%;">

@@ -45,13 +45,23 @@ class AdminPostController extends Controller
             'title' => 'required', 'string', 'max:255',
             'description' => 'required', 'string', 'max:255',
             'thumbnail' => 'required', File::types(['gif', 'GIF', 'jpeg', 'JPEG', 'jpg', 'JPG', 'png', 'PNG']),
-            'file' => 'required', File::types(['mp3', 'docx', 'pdf', 'doc', 'xls', 'xlsx', 'txt', 'wav', 'ppt', 'pptx']),
-            'video' => 'required', File::types(['mp4', 'avi', 'mov', 'flv', 'avchd', 'mkv', 'mpeg'])
+            'file' => File::types(['mp3', 'docx', 'pdf', 'doc', 'xls', 'xlsx', 'txt', 'wav', 'ppt', 'pptx']),
+            'video' => File::types(['mp4', 'avi', 'mov', 'flv', 'avchd', 'mkv', 'mpeg'])
         ]);
 
         $path = request()->file('thumbnail')->store('thumbnails');
-        $file_path = request()->file('file')->store('files');
-        $video_path = request()->file('video')->store('videos');
+
+        if(request()->file('file') === null){
+            $file_path = null;
+        } else {
+            $file_path = request()->file('file')->store('files');
+        }
+
+        if(request()->file('video') === null){
+            $video_path = null;
+        } else {
+            $video_path = request()->file('video')->store('videos');
+        }
 
         Post::create([
             'title' => $request['title'],

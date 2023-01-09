@@ -14,6 +14,24 @@
                     <div class="card-text">
                         <p>{{$post->description}}</p>
                     </div>
+                    <div>
+                        @if($post->file === null)
+                            <div></div>
+                        @else
+                            <div>
+                                <embed src="{{ asset('storage/'. $post->file) }}">
+                            </div>
+                        @endif
+                        @if($post->video === null)
+                            <div></div>
+                        @else
+                            <div>
+                                <video width="320" height="240" controls>
+                                    <source src="{{ asset('storage/'. $post->video) }}">
+                                </video>
+                            </div>
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>
