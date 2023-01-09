@@ -38,11 +38,16 @@ class SongToPlaylistController extends Controller
 
     public function destroy($playlist_id, $song_id)
     {
-        $songInPlaylist = DB::table('playlist_song')
-            ->where('playlist_id', '=', $playlist_id)
-            ->where('song_id', '=', $song_id)
+        $songOutPlaylist = PlaylistSong::where('playlist_id', $playlist_id)->where('song_id', $song_id);
+
+        $songOutPlaylist->delete();
+
+        $user_id = auth()->user()?->id;
+
+        $playlists = DB::table('playlists')
+            ->where('user_id', '=', $user_id)
+            ->orderByRaw('title ASC')
             ->get();
-        $songInPlaylist->delete();
-        return view('/playlists/' . $playlist_id, ['playlist' => Playlist::find($playlist_id)]);
+        return view('playlists.playlists', ['playlists' => $playlists]);
     }
 }

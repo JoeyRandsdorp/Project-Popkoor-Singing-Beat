@@ -3,11 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Playlist;
 use Illuminate\Support\Facades\DB;
+use App\Models\Playlist;
+use App\Models\PlaylistSong;
+use App\Models\Song;
 
 class PlaylistController extends Controller
 {
+    public static function getSongData($id)
+    {
+        $song = DB::table('songs')
+            ->where('id', '=', $id)
+            ->first();
+        return $song;
+    }
+
     public function index()
     {
         $user_id = auth()->user()?->id;
@@ -49,7 +59,11 @@ class PlaylistController extends Controller
             return redirect()->route('playlists.index');
         }
         else {
-            return view('playlists.details', compact('playlist'));
+            $playlist_songs = DB::table('playlist_songs')
+                ->where('playlist_id', '=', $id)
+                ->get();
+
+            return view('playlists.details', compact('playlist'), ['playlist_songs' => $playlist_songs]);
         }
     }
 
@@ -97,7 +111,13 @@ class PlaylistController extends Controller
             return redirect()->route('playlists.index');
         }
         else {
+            $playlist_id = $playlist->id;
+
+            $playlist_songs = PlaylistSong::where('playlist_id', $playlist_id);
+            $playlist_songs->delete();
+
             $playlist->delete();
+
             return redirect()->route('playlists.index');
         }
     }

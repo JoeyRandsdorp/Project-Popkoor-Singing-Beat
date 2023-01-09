@@ -12,8 +12,8 @@
                     </tr>
                     @foreach($playlists as $playlist)
                         <tr>
-                            <th>{{$playlist->title}}</th>
-                            <th><a href="{{route('playlists.show', $playlist->id)}}">Details</a></th>
+                            <td>{{$playlist->title}}</td>
+                            <td><a href="{{route('playlists.show', $playlist->id)}}">Details</a></td>
                         </tr>
                     @endforeach
                 </table>

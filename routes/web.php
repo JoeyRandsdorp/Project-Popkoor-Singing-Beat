@@ -25,6 +25,7 @@ Route::resource('/comments', \App\Http\Controllers\CommentController::class)->mi
 Route::resource('/songs', \App\Http\Controllers\MusicController::class)->middleware('auth');
 Route::resource('/playlists', \App\Http\Controllers\PlaylistController::class)->middleware('auth');
 Route::resource('/playlist_song', \App\Http\Controllers\SongToPlaylistController::class)->middleware('auth');
+Route::match(["get", "delete"], '/playlist_song/{playlist_id}/{song_id}', [\App\Http\Controllers\SongToPlaylistController::class, 'destroy'])->name('delete-song-playlist')->middleware('auth');
 
 //People who can post access only
 Route::resource('/admin/posts', \App\Http\Controllers\AdminPostController::class)->middleware('post_role')->middleware('admin');

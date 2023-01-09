@@ -14,10 +14,10 @@
                     </tr>
                     @foreach($songs as $song)
                         <tr>
-                            <th>{{$song->title}}</th>
-                            <th>{{$song->artist}}</th>
-                            <th><a href="/songs/{{$song->id}}">Details</a></th>
-                            <th><a href="/playlist_song/create?id={{$song->id}}" class="btn btn-success">Voeg toe</a></th>
+                            <td>{{$song->title}}</td>
+                            <td>{{$song->artist}}</td>
+                            <td><a href="/songs/{{$song->id}}">Details</a></td>
+                            <td><a href="/playlist_song/create?id={{$song->id}}" class="btn btn-success">Voeg toe</a></td>
                         </tr>
                     @endforeach
                 </table>

@@ -16,24 +16,24 @@
                     </tr>
                     @foreach($songs as $song)
                         <tr>
-                            <th>{{$song->title}}</th>
-                            <th>{{$song->artist}}</th>
-                            <th><a href="{{route('songs.show', $song->id)}}">Details</a></th>
-                            <th><a href="/playlist_song/create?id={{$song->id}}" class="btn btn-success">Voeg toe</a></th>
-                            <th>
+                            <td>{{$song->title}}</td>
+                            <td>{{$song->artist}}</td>
+                            <td><a href="{{route('songs.show', $song->id)}}">Details</a></td>
+                            <td><a href="/playlist_song/create?id={{$song->id}}" class="btn btn-success">Voeg toe</a></td>
+                            <td>
                                 @if($song->visibility === 1)
                                     Zichtbaar
                                 @else
                                     Onzichtbaar
                                 @endif
-                            </th>
-                            <th>
+                            </td>
+                            <td>
                                 <form action="{{route('songs.destroy', $song->id)}}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger btn-sm" type="submit">Verwijderen</button>
                                 </form>
-                            </th>
+                            </td>
                         </tr>
                     @endforeach
                 </table>
