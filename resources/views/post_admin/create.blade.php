@@ -18,11 +18,9 @@
                 </div>
                 <div>
                     <label for="description" class="form-label">Bijschrift bericht</label>
-                    <input id="description"
-                           type="text"
-                           name="description"
-                           class="@error('description') is-invalid @enderror form-control"
-                           value="{{old('description')}}"/>
+                    <textarea id="description"
+                              name="description"
+                              class="@error('description') is-invalid @enderror form-control">{{old('description')}}</textarea>
                     @error('description')
                     <span>{{$message}}</span>
                     @enderror

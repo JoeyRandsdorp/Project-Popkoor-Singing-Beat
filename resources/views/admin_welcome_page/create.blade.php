@@ -39,11 +39,6 @@
                     <textarea id="description"
                               name="description"
                               class="@error('description') is-invalid @enderror form-control">{{old('description')}}</textarea>
-{{--                    <input id="description"--}}
-{{--                           type="text"--}}
-{{--                           name="description"--}}
-{{--                           class="@error('description') is-invalid @enderror form-control"--}}
-{{--                           value="{{old('description')}}"/>--}}
                     @error('description')
                     <span>{{$message}}</span>
                     @enderror

@@ -15,7 +15,7 @@
                                     <h4>{{$post->title}}</h4>
                                 </div>
                                 <div class="card-text">
-                                    <p>{{$post->description}}</p>
+                                    <p>{!!$post->description!!}</p>
                                 </div>
                                 <div class="col">
                                     <a href="{{route('posts.show', $post->id)}}" class="btn btn-success">Details</a>

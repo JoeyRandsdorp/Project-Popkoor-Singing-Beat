@@ -12,7 +12,7 @@
                         <img style="width: 50%;" src="{{ asset('storage/'. $post->thumbnail) }}" alt="Foto">
                     </div>
                     <div class="card-text">
-                        <p>{{$post->description}}</p>
+                        <p>{!!$post->description!!}</p>
                     </div>
                     @if($post->file === null)
                         <div></div>

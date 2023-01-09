@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\File;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Michelf\Markdown;
 
 class AdminPostController extends Controller
 {
@@ -63,11 +64,14 @@ class AdminPostController extends Controller
             $video_path = request()->file('video')->store('videos');
         }
 
+        $text = $request['description'];
+        $richText = Markdown::defaultTransform($text);
+
         Post::create([
             'title' => $request['title'],
             'user_id' => $request ['user_id'],
             'thumbnail' => $path,
-            'description' => $request['description'],
+            'description' => $richText,
             'file' => $file_path,
             'video' => $video_path,
             'date' => $request['date'],
