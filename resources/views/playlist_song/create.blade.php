@@ -9,7 +9,7 @@
                     <label for="playlist_id">Kies een playlist:</label>
                     <select name="playlist_id">
                         @foreach($playlists as $playlist)
-                            <option id="playlist_id" value="{{$playlist->id}}">{{$playlist->id}}. {{$playlist->title}}</option>
+                            <option id="playlist_id" value="{{$playlist->id}}">{{$playlist->title}}</option>
                         @endforeach
                     </select>
                 </div>
