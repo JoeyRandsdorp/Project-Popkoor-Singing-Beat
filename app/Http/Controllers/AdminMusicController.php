@@ -31,7 +31,7 @@ class AdminMusicController extends Controller
             'lyrics' => File::types(['pdf', 'PDF']),
             'translation' => File::types(['pdf', 'PDF']),
             'sheet_music' => File::types(['pdf', 'PDF']),
-            'full_song' => 'required', File::types(['mp3', 'wav', 'aac', 'ogg', 'aiff', 'flac']),
+            'full_song' => 'required', File::types(['mp3']),
             'image' => 'required', File::types(['gif', 'GIF', 'jpeg', 'JPEG', 'jpg', 'JPG', 'png', 'PNG'])
         ]);
 
