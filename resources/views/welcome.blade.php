@@ -10,7 +10,7 @@
                     </div>
                     <div class="card-body">
                         <div class="card-text">
-                            <p>{{$welcome->description}}</p>
+                            <p>{!!$welcome->description!!}</p>
                         </div>
                         <div class="card-image">
                             <img style="width: 50%;" src="{{ asset('storage/'. $welcome->image) }}" alt="">

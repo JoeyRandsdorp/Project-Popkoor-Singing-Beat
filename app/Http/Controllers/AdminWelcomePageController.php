@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\WelcomePage;
 use Illuminate\Validation\Rules\File;
+use Michelf\Markdown;
 
 class AdminWelcomePageController extends Controller
 {
@@ -28,10 +29,12 @@ class AdminWelcomePageController extends Controller
         ]);
 
         $image = request()->file('image')->store('welcome_images');
+        $text = $request['description'];
+        $richText = Markdown::defaultTransform($text);
 
         WelcomePage::create([
             'title' => $request['title'],
-            'description' => $request['description'],
+            'description' => $richText,
             'image' => $image
         ]);
 
