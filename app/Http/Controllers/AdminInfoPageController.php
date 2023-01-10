@@ -2,22 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Console\View\Components\Info;
 use Illuminate\Http\Request;
-use App\Models\WelcomePage;
 use Illuminate\Validation\Rules\File;
 use Michelf\Markdown;
+use App\Models\InfoPage;
 
-class AdminWelcomePageController extends Controller
+class AdminInfoPageController extends Controller
 {
     public function index()
     {
-        $welcomePage = WelcomePage::all();
-        return view('admin_welcome_page.welcome', ['welcomePage' => $welcomePage]);
+        $infoPage = InfoPage::all();
+        return view('admin_info_page.info', ['infoPage' => $infoPage]);
     }
 
     public function create()
     {
-        return view('admin_welcome_page.create');
+        return view('admin_info_page.create');
     }
 
     public function store(Request $request)
@@ -37,19 +38,19 @@ class AdminWelcomePageController extends Controller
         $text = $request['description'];
         $richText = Markdown::defaultTransform($text);
 
-        WelcomePage::create([
+        InfoPage::create([
             'title' => $request['title'],
             'description' => $richText,
             'image' => $image
         ]);
 
-        return redirect()->route('welcome.index');
+        return redirect()->route('info.index');
     }
 
     public function edit($id)
     {
-        $welcomePage = WelcomePage::find($id);
-        return view('admin_welcome_page.edit', compact('welcomePage'));
+        $infoPage = InfoPage::find($id);
+        return view('admin_info_page.edit', compact('infoPage'));
     }
 
     public function update(Request $request, $id)
@@ -66,20 +67,20 @@ class AdminWelcomePageController extends Controller
             $image = request()->file('image')->store('welcome_images');
         }
 
-        $welcomePage = WelcomePage::find($id);
-        $welcomePage->title = $request->get('title');
-        $welcomePage->description = $request->get('description');
-        $welcomePage->image = $image;
+        $infoPage = InfoPage::find($id);
+        $infoPage->title = $request->get('title');
+        $infoPage->description = $request->get('description');
+        $infoPage->image = $image;
 
-        $welcomePage->save();
+        $infoPage->save();
 
-        return redirect()->route('welcome.index');
+        return redirect()->route('info.index');
     }
 
     public function destroy($id)
     {
-        $welcomePage = WelcomePage::find($id);
-        $welcomePage->delete();
-        return redirect()->route('welcome.index');
+        $infoPage = InfoPage::find($id);
+        $infoPage->delete();
+        return redirect()->route('info.index');
     }
 }

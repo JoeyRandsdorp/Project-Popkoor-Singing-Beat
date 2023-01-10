@@ -12,9 +12,13 @@
                     <div class="card-text">
                         <p>{!!$welcome->description!!}</p>
                     </div>
-                    <div class="card-image">
-                        <img style="width: 50%;" src="{{ asset('storage/'. $welcome->image) }}" alt="">
-                    </div>
+                    @if($welcome->image === null)
+                        <div></div>
+                    @else
+                        <div class="card-image">
+                            <img style="width: 50%;" src="{{ asset('storage/'. $welcome->image) }}" alt="">
+                        </div>
+                    @endif
                     <br>
                     <div>
                         <div class="col">
