@@ -13,11 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('info_pages', function (Blueprint $table) {
+        Schema::create('calendars', function (Blueprint $table) {
             $table->id();
+            $table->date('date');
+            $table->time('start_time')->nullable();
+            $table->time('end_time')->nullable();
             $table->string('title');
-            $table->longText('description');
-            $table->longText('image')->nullable();
+            $table->string('description');
+            $table->string('place');
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('info_pages');
+        Schema::dropIfExists('calendars');
     }
 };
