@@ -3,7 +3,7 @@
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <form action="{{route('songs.update', $song->id)}}" method="post">
+            <form action="{{route('repertoire.update', $song->id)}}" method="post" enctype="multipart/form-data">
                 @method('put')
                 @csrf
                 <div>
@@ -29,13 +29,13 @@
                     @enderror
                 </div>
                 <div>
-                    <label for="full_song" class="form-label">Volledige nummer</label>
-                    <input id="full_song"
+                    <label for="song" class="form-label">Demo</label>
+                    <input id="song"
                            type="file"
-                           name="full_song"
-                           class="@error('full_song') is-invalid @enderror form-control"
-                           value="{{$song->full_song}}"/>
-                    @error('full_song')
+                           name="song"
+                           class="@error('song') is-invalid @enderror form-control"
+                           value="{{$song->song}}"/>
+                    @error('song')
                     <span>{{$message}}</span>
                     @enderror
                 </div>
@@ -51,39 +51,6 @@
                     @enderror
                 </div>
                 <div>
-                    <label for="lyrics" class="form-label">Songtekst</label>
-                    <input id="lyrics"
-                           type="file"
-                           name="lyrics"
-                           class="@error('lyrics') is-invalid @enderror form-control"
-                           value="{{$song->lyrics}}"/>
-                    @error('lyrics')
-                    <span>{{$message}}</span>
-                    @enderror
-                </div>
-                <div>
-                    <label for="translation" class="form-label">Vertaling songtekst</label>
-                    <input id="translation"
-                           type="file"
-                           name="translation"
-                           class="@error('translation') is-invalid @enderror form-control"
-                           value="{{$song->translation}}"/>
-                    @error('translation')
-                    <span>{{$message}}</span>
-                    @enderror
-                </div>
-                <div>
-                    <label for="sheet_music" class="form-label">Bladmuziek</label>
-                    <input id="sheet_music"
-                           type="file"
-                           name="sheet_music"
-                           class="@error('sheet_music') is-invalid @enderror form-control"
-                           value="{{$song->sheet_music}}"/>
-                    @error('sheet_music')
-                    <span>{{$message}}</span>
-                    @enderror
-                </div>
-                <div>
                     <label for="visibility" class="form-label">Zichtbaarheid aanpassen</label>
                     <div class="col-md-6">
                         <input id="visibility" type="hidden" name="visibility" value="0">
@@ -94,6 +61,7 @@
                         @endif
                     </div>
                 </div>
+                <br><br>
                 <div>
                     <input type="submit" value="Wijzigingen opslaan">
                 </div>

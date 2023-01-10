@@ -60,20 +60,20 @@ class AdminWelcomePageController extends Controller
             'image' => File::types(['gif', 'GIF', 'jpeg', 'JPEG', 'jpg', 'JPG', 'png', 'PNG']),
         ]);
 
-        if(request()->file('image') === null){
-            $image = null;
-        } else {
-            $image = request()->file('image')->store('welcome_images');
-        }
-
         $welcomePage = WelcomePage::find($id);
         $welcomePage->title = $request->get('title');
         $welcomePage->description = $request->get('description');
-        $welcomePage->image = $image;
 
-        $welcomePage->save();
+        if(request()->file('image') === null){
+            $welcomePage->save();
+            return redirect()->route('welcome.index');
+        } else {
+            $image = request()->file('image')->store('welcome_images');
+            $welcomePage->image = $image;
 
-        return redirect()->route('welcome.index');
+            $welcomePage->save();
+            return redirect()->route('welcome.index');
+        }
     }
 
     public function destroy($id)

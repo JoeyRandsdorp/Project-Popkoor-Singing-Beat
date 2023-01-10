@@ -128,17 +128,94 @@ class AdminPostController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255',
-            'description' => 'required|string'
+            'description' => 'required|string',
+            'thumbnail' => File::types(['gif', 'GIF', 'jpeg', 'JPEG', 'jpg', 'JPG', 'png', 'PNG']),
+            'file' => File::types(['mp3', 'pdf', 'txt']),
+            'video' => File::types(['mp4', 'avi', 'mov', 'flv', 'avchd', 'mkv', 'mpeg'])
         ]);
+
         $post = Post::find($id);
+
         $post->user_id = $request->get('user_id');
         $post->title = $request->get('title');
         $post->description = $request->get('description');
         $post->date = $request->get('date');
         $post->comments = $request->get('comments');
         $post->pinned = $request->get('pinned');
-        $post->save();
-        return redirect()->route('posts.index');
+
+        if(request()->file('thumbnail') === null){
+            if(request()->file('file') === null){
+                if(request()->file('video') === null){
+                    $post->save();
+                    return redirect()->route('posts.index');
+                } else {
+                    $video = request()->file('video')->store('videos');
+                    $post->video = $video;
+
+                    $post->save();
+                    return redirect()->route('posts.index');
+                }
+            } else {
+                if(request()->file('video') === null){
+                    $file = request()->file('file')->store('files');
+                    $post->file = $file;
+
+                    $post->save();
+                    return redirect()->route('posts.index');
+                } else {
+                    $file = request()->file('file')->store('files');
+                    $post->file = $file;
+
+                    $video = request()->file('video')->store('videos');
+                    $post->video = $video;
+
+                    $post->save();
+                    return redirect()->route('posts.index');
+                }
+            }
+        } else {
+            if(request()->file('file') === null){
+                if(request()->file('video') === null){
+                    $thumbnail = request()->file('thumbnail')->store('thumbnails');
+                    $post->thumbnail = $thumbnail;
+
+                    $post->save();
+                    return redirect()->route('posts.index');
+                } else {
+                    $thumbnail = request()->file('thumbnail')->store('thumbnails');
+                    $post->thumbnail = $thumbnail;
+
+                    $video = request()->file('video')->store('videos');
+                    $post->video = $video;
+
+                    $post->save();
+                    return redirect()->route('posts.index');
+                }
+            } else {
+                if(request()->file('video') === null){
+                    $thumbnail = request()->file('thumbnail')->store('thumbnails');
+                    $post->thumbnail = $thumbnail;
+
+                    $file = request()->file('file')->store('files');
+                    $post->file = $file;
+
+                    $post->save();
+                    return redirect()->route('posts.index');
+                } else {
+                    $thumbnail = request()->file('thumbnail')->store('thumbnails');
+                    $post->thumbnail = $thumbnail;
+
+                    $file = request()->file('file')->store('files');
+                    $post->file = $file;
+
+                    $video = request()->file('video')->store('videos');
+                    $post->video = $video;
+
+                    $post->save();
+                    return redirect()->route('posts.index');
+                }
+            }
+        }
     }
 
     /**

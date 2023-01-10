@@ -32,7 +32,7 @@ class AdminInfoPageController extends Controller
         if(request()->file('image') === null){
             $image = null;
         } else {
-            $image = request()->file('image')->store('welcome_images');
+            $image = request()->file('image')->store('info_images');
         }
 
         $text = $request['description'];
@@ -61,20 +61,20 @@ class AdminInfoPageController extends Controller
             'image' => File::types(['gif', 'GIF', 'jpeg', 'JPEG', 'jpg', 'JPG', 'png', 'PNG']),
         ]);
 
-        if(request()->file('image') === null){
-            $image = null;
-        } else {
-            $image = request()->file('image')->store('welcome_images');
-        }
-
         $infoPage = InfoPage::find($id);
         $infoPage->title = $request->get('title');
         $infoPage->description = $request->get('description');
-        $infoPage->image = $image;
 
-        $infoPage->save();
+        if(request()->file('image') === null){
+            $infoPage->save();
+            return redirect()->route('info.index');
+        } else {
+            $image = request()->file('image')->store('info_images');
+            $infoPage->image = $image;
 
-        return redirect()->route('info.index');
+            $infoPage->save();
+            return redirect()->route('info.index');
+        }
     }
 
     public function destroy($id)

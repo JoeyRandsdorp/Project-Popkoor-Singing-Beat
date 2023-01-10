@@ -29,6 +29,39 @@
                     @enderror
                 </div>
                 <div>
+                    <label for="file" class="form-label">Bestand (zoals een excel-bestand)</label>
+                    <input id="file"
+                           type="file"
+                           name="file"
+                           class="@error('file') is-invalid @enderror form-control"
+                           value="{{$post->file}}"/>
+                    @error('file')
+                    <span>{{$message}}</span>
+                    @enderror
+                </div>
+                <div>
+                    <label for="thumbnail" class="form-label">Afbeelding toevoegen</label>
+                    <input id="thumbnail"
+                           type="file"
+                           name="thumbnail"
+                           class="@error('thumbnail') is-invalid @enderror form-control"
+                           value="{{$post->thumbnail}}"/>
+                    @error('thumbnail')
+                    <span>{{$message}}</span>
+                    @enderror
+                </div>
+                <div>
+                    <label for="video" class="form-label">Video toevoegen</label>
+                    <input id="video"
+                           type="file"
+                           name="video"
+                           class="@error('video') is-invalid @enderror form-control"
+                           value="{{$post->video}}"/>
+                    @error('video')
+                    <span>{{$message}}</span>
+                    @enderror
+                </div>
+                <div>
                     <label for="comments" class="form-label">Comments aan- of uitzetten</label>
 
                     <div class="col-md-6">

@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 //All access routes
 Route::get('/', [\App\Http\Controllers\WelcomePageController::class, 'index']);
 Route::get('/info', [\App\Http\Controllers\InfoPageController::class, 'index']);
+Route::resource('/repertoire', \App\Http\Controllers\RepertoireController::class);
 
 //Member access only
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
@@ -35,6 +36,7 @@ Route::resource('/admin/songs', \App\Http\Controllers\AdminMusicController::clas
 Route::resource('/admin/voice_parts', \App\Http\Controllers\VoicePartController::class)->middleware('admin');
 Route::resource('/admin/welcome', \App\Http\Controllers\AdminWelcomePageController::class)->middleware('admin');
 Route::resource('/admin/info', \App\Http\Controllers\AdminInfoPageController::class)->middleware('auth');
+Route::resource('/admin/repertoire', \App\Http\Controllers\AdminRepertoireController::class)->middleware('auth');
 
 //Routes for login, register
 Auth::routes();
