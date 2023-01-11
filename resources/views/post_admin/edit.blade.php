@@ -3,7 +3,7 @@
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <form action="{{route('posts.update', $post->id)}}" method="post">
+            <form action="{{route('posts.update', $post->id)}}" method="post" enctype="multipart/form-data">
                 @method('put')
                 @csrf
                 <div>
