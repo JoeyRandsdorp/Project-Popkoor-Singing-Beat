@@ -92,7 +92,7 @@
                     @enderror
                 </div>
                 <div>
-                    <input type="submit" value="Wijzigingen opslaan">
+                    <input type="submit" value="Maak gebruiker aan">
                 </div>
             </form>
         </div>

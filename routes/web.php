@@ -22,6 +22,7 @@ Route::resource('/introduction', \App\Http\Controllers\IntroductionController::c
 Route::resource('/photo_albums', \App\Http\Controllers\PhotoAlbumController::class);
 Route::get('/contact', [\App\Http\Controllers\ContactPageController::class, 'index']);
 Route::resource('/archive', \App\Http\Controllers\ArchiveController::class);
+Route::resource('/sponsors', \App\Http\Controllers\SponsorController::class);
 
 //Member access only
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
@@ -48,6 +49,7 @@ Route::resource('/admin/photo_albums', \App\Http\Controllers\AdminPhotoAlbumCont
 Route::resource('/admin/photos', \App\Http\Controllers\AdminPhotoController::class)->middleware('admin');
 Route::resource('/admin/contact', \App\Http\Controllers\AdminContactPageController::class)->middleware('admin');
 Route::resource('/admin/archive', \App\Http\Controllers\AdminArchiveController::class)->middleware('admin');
+Route::resource('/admin/sponsors', \App\Http\Controllers\AdminSponsorController::class)->middleware('admin');
 
 //Routes for login
 Auth::routes();
