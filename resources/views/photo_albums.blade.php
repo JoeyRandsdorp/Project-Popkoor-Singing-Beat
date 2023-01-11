@@ -16,10 +16,14 @@
                     @foreach($photoAlbums as $photoAlbum)
                         <tr>
                             <td>{{$photoAlbum->title}}</td>
-                            <td>8</td>
+                            @php
+                                $photos = App\Http\Controllers\PhotoAlbumController::getPhotos($photoAlbum->id);
+                                $photosCount = count($photos);
+                            @endphp
+                            <td>{{$photosCount}}</td>
                             <td>{{$photoAlbum->description}}</td>
                             <td>{{date('d-m-Y', strtotime($photoAlbum->date))}}</td>
-                            <td><a href="/photo_albums/{{$photoAlbum->id}}">Bekijk</a></td>
+                            <td><a href="/photo_albums/{{$photoAlbum->id}}" class="btn btn-success">Bekijk</a></td>
                         </tr>
                     @endforeach
                 </table>

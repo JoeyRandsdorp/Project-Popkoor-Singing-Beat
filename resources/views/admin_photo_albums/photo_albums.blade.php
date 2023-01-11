@@ -17,7 +17,11 @@
                     @foreach($photoAlbums as $photoAlbum)
                         <tr>
                             <td>{{$photoAlbum->title}}</td>
-                            <td>8</td>
+                            @php
+                            $photos = App\Http\Controllers\AdminPhotoAlbumController::getPhotos($photoAlbum->id);
+                            $photosCount = count($photos);
+                            @endphp
+                            <td>{{$photosCount}}</td>
                             <td>{{$photoAlbum->description}}</td>
                             <td>{{date('d-m-Y', strtotime($photoAlbum->date))}}</td>
                             <td><a href="{{route('photo_albums.show', $photoAlbum->id)}}" class="btn btn-success">Bekijk</a></td>

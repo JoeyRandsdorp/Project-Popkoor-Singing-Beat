@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\PhotoAlbum;
+use App\Models\Photo;
 
 class AdminPhotoAlbumController extends Controller
 {
+    public static function getPhotos($id)
+    {
+        $photos = DB::table('photos')->where('photo_album_id', '=', $id)->get();
+        return $photos;
+    }
+
     public function index()
     {
         $photoAlbums = PhotoAlbum::query()
@@ -18,7 +26,9 @@ class AdminPhotoAlbumController extends Controller
     public function show($id)
     {
         $photoAlbum = PhotoAlbum::find($id);
-        return view('admin_photo_albums.details', ['photoAlbum' => $photoAlbum]);
+        $photos = $this->getPhotos($id);
+
+        return view('admin_photo_albums.details', ['photoAlbum' => $photoAlbum], ['photos' => $photos]);
     }
 
     public function create()
@@ -70,7 +80,10 @@ class AdminPhotoAlbumController extends Controller
     public function destroy($id)
     {
         $photoAlbum = PhotoAlbum::find($id);
+        $photos = $this->getPhotos($id);
+
         $photoAlbum->delete();
+        $photos->delete();
         return redirect()->route('photo_albums.index');
     }
 }

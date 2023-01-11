@@ -42,7 +42,8 @@ Route::resource('/admin/info', \App\Http\Controllers\AdminInfoPageController::cl
 Route::resource('/admin/repertoire', \App\Http\Controllers\AdminRepertoireController::class)->middleware('admin');
 Route::resource('/admin/calendar', \App\Http\Controllers\AdminCalendarController::class)->middleware('admin');
 Route::resource('/admin/introduction', \App\Http\Controllers\AdminIntroductionController::class)->middleware('admin');
-Route::resource('admin/photo_albums', \App\Http\Controllers\AdminPhotoAlbumController::class)->middleware('admin');
+Route::resource('/admin/photo_albums', \App\Http\Controllers\AdminPhotoAlbumController::class)->middleware('admin');
+Route::resource('/admin/photos', \App\Http\Controllers\AdminPhotoController::class)->middleware('admin');
 
 //Routes for login
 Auth::routes();
