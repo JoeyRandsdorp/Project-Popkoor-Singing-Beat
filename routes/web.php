@@ -20,6 +20,7 @@ Route::resource('/repertoire', \App\Http\Controllers\RepertoireController::class
 Route::get('/calendar', [\App\Http\Controllers\CalendarController::class, 'index']);
 Route::resource('/introduction', \App\Http\Controllers\IntroductionController::class);
 Route::resource('/photo_albums', \App\Http\Controllers\PhotoAlbumController::class);
+Route::get('/contact', [\App\Http\Controllers\ContactPageController::class, 'index']);
 
 //Member access only
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
@@ -44,6 +45,7 @@ Route::resource('/admin/calendar', \App\Http\Controllers\AdminCalendarController
 Route::resource('/admin/introduction', \App\Http\Controllers\AdminIntroductionController::class)->middleware('admin');
 Route::resource('/admin/photo_albums', \App\Http\Controllers\AdminPhotoAlbumController::class)->middleware('admin');
 Route::resource('/admin/photos', \App\Http\Controllers\AdminPhotoController::class)->middleware('admin');
+Route::resource('/admin/contact', \App\Http\Controllers\AdminContactPageController::class)->middleware('admin');
 
 //Routes for login
 Auth::routes();
