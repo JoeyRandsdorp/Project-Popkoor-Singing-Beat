@@ -18,7 +18,7 @@
                                     <p>{!!$sponsor->description!!}</p>
                                 </div>
                                 <div class="col">
-                                    <a href="/sponsors/{{$sponsor->id)}}" class="btn btn-success">Details</a>
+                                    <a href="/sponsors/{{$sponsor->id}}" class="btn btn-success">Details</a>
                                 </div>
                             </div>
                         </div>
