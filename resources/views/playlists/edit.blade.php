@@ -3,6 +3,9 @@
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <a href="/playlists">< Terug</a>
+            <br><br>
+            <h1>Bewerk de playlist {{$playlist->title}}</h1>
             <form action="{{route('playlists.update', $playlist->id)}}" method="post" enctype="multipart/form-data">
                 @method('put')
                 @csrf

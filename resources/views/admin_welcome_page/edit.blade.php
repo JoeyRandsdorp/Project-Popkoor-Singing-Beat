@@ -1,8 +1,14 @@
 @extends('layouts.app')
 
+@section('title', 'Welkomstpagina bewerken')
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <a href="/admin/welcome">< Terug</a>
+            <br><br>
+            <h1>Bewerk de inhoud van de welkomstpagina</h1>
+            <h4>Upload alleen een nieuwe foto als je deze wilt vervangen/toevoegen</h4>
             <form action="{{route('welcome.update', $welcomePage->id)}}" method="post" enctype="multipart/form-data">
                 @method('put')
                 @csrf
@@ -39,7 +45,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
-                <br><br>
+                <br>
                 <div>
                     <input type="submit" value="Bewerk welkomstpagina">
                 </div>

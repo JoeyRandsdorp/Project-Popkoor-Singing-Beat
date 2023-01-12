@@ -1,8 +1,14 @@
 @extends('layouts.app')
 
+@section('title', 'Informatiepagina bewerken')
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <a href="/admin/info">< Terug</a>
+            <br><br>
+            <h1>Bewerk de inhoud van de Informatiepagina</h1>
+            <h4>Upload alleen een nieuwe foto als je deze wilt vervangen/toevoegen</h4>
             <form action="{{route('info.update', $infoPage->id)}}" method="post" enctype="multipart/form-data">
                 @method('put')
                 @csrf
@@ -39,7 +45,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
-                <br><br>
+                <br>
                 <div>
                     <input type="submit" value="Bewerk informatiepagina">
                 </div>

@@ -1,8 +1,13 @@
 @extends('layouts.app')
 
+@section('title', 'Bewerk gebruiker ' . $user->name . ' ' . $user->lastname)
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <a href="/admin/users">< Terug</a>
+            <br><br>
+            <h1>Bewerk de gebruiker {{$user->name}} {{$user->lastname}}</h1>
             <form action="{{route('users.update', $user->id)}}" method="post" enctype="multipart/form-data">
                 @method('put')
                 @csrf
@@ -54,7 +59,7 @@
                     <label for="admin" class="form-label">Adminrol aan- of uitzetten</label>
 
                     <div class="col-md-6">
-                        <input id="admin" type="hidden" name="admin" value="0">\
+                        <input id="admin" type="hidden" name="admin" value="0">
                         @if ($user->admin_role === 0)
                             <input id="admin" type="checkbox" name="admin" value="1">
                         @else
@@ -74,6 +79,7 @@
                         @endif
                     </div>
                 </div>
+                <br>
                 <div>
                     <input type="submit" value="Wijzigingen opslaan">
                 </div>

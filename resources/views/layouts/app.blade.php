@@ -23,7 +23,6 @@
                 @guest
                     @if(Route::has('login'))
                         <a class="navbar-brand" href="{{ url('/') }}">Popkoor Singing Beat</a>
-
                     @endif
                     @else
                         <a class="navbar-brand" href="{{ url('/home') }}">Popkoor Singing Beat</a>
@@ -80,9 +79,15 @@
                                     <a class="nav-link" href="/admin/users">Gebruikers</a>
                                 </li>
                             @else
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/posts">Berichten</a>
-                                </li>
+                                @if(auth()->user()?->post_role === 1)
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="admin/posts">Berichten</a>
+                                    </li>
+                                @else
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/posts">Berichten</a>
+                                    </li>
+                                @endif
                                 <li class="nav-item">
                                     <a class="nav-link" href="/songs">Repertoire</a>
                                 </li>

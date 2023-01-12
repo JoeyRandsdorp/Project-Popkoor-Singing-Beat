@@ -1,12 +1,18 @@
 @extends('layouts.app')
 
+@section('title', 'Maak een nieuw bericht')
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <a href="/admin/posts">< Terug</a>
+            <br><br>
+            <h1>Nieuw bericht maken</h1>
+            <h4>* = verplicht</h4>
             <form action="{{route('posts.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div>
-                    <label for="title" class="form-label">Titel bericht</label>
+                    <label for="title" class="form-label">Titel bericht *</label>
                     <input id="title"
                            type="text"
                            name="title"
@@ -17,7 +23,7 @@
                     @enderror
                 </div>
                 <div>
-                    <label for="description" class="form-label">Bijschrift bericht</label>
+                    <label for="description" class="form-label">Bijschrift bericht *</label>
                     <textarea id="description"
                               name="description"
                               class="@error('description') is-invalid @enderror form-control">{{old('description')}}</textarea>
@@ -26,18 +32,7 @@
                     @enderror
                 </div>
                 <div>
-                    <label for="file" class="form-label">Bestand (zoals een excel-bestand)</label>
-                    <input id="file"
-                           type="file"
-                           name="file"
-                           class="@error('file') is-invalid @enderror form-control"
-                           value="{{old('file')}}"/>
-                    @error('file')
-                    <span>{{$message}}</span>
-                    @enderror
-                </div>
-                <div>
-                    <label for="thumbnail" class="form-label">Afbeelding toevoegen</label>
+                    <label for="thumbnail" class="form-label">Afbeelding toevoegen *</label>
                     <input id="thumbnail"
                            type="file"
                            name="thumbnail"
@@ -58,6 +53,18 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <div>
+                    <label for="file" class="form-label">Bestand toevoegen</label>
+                    <input id="file"
+                           type="file"
+                           name="file"
+                           class="@error('file') is-invalid @enderror form-control"
+                           value="{{old('file')}}"/>
+                    @error('file')
+                    <span>{{$message}}</span>
+                    @enderror
+                </div>
+                <br>
                 <div>
                     <label for="comments" class="form-label">Comments aan- of uitzetten</label>
 
@@ -80,7 +87,7 @@
                 <div>
                     <input id="user_id" type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                 </div>
-                <br><br>
+                <br>
                 <div>
                     <input type="submit" value="Plaats bericht">
                 </div>

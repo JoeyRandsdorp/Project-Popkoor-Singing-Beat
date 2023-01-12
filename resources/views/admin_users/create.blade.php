@@ -1,8 +1,13 @@
 @extends('layouts.app')
 
+@section('title', 'Maak gebruiker aan')
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <a href="/admin/users">< Terug</a>
+            <br><br>
+            <h1>Maak een nieuwe gebruiker</h1>
             <form action="{{route('users.store')}}" method="post">
                 @csrf
                 <div>
@@ -91,6 +96,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <input type="submit" value="Maak gebruiker aan">
                 </div>

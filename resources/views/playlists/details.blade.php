@@ -1,8 +1,12 @@
 @extends('layouts.app')
 
+@section('title', $playlist->title)
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <a href="/playlists">< Terug</a>
+            <br><br>
             <div class="card">
                 <div class="card-header">
                     <h1>{{$playlist->title}}</h1>
@@ -41,9 +45,9 @@
                     </table>
                 </div>
                 <div class="card-body">
-                    <br>
                     <div>
-                        <a href="{{route('playlists.edit', $playlist->id)}}" class="btn btn-success">Afspeellijst bewerken</a>
+                        <a href="{{route('playlists.edit', $playlist->id)}}"
+                           class="btn btn-success btn-sm">Afspeellijst bewerken</a>
                     </div>
                     <br>
                     <div>

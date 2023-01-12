@@ -1,12 +1,18 @@
 @extends('layouts.app')
 
+@section('title', 'Voeg een muzieknummer toe')
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <a href="/admin/songs">< Terug</a>
+            <br><br>
+            <h1>Voeg een muzieknummer toe aan het repertoire (voor leden)</h1>
+            <h4>* = verplicht</h4>
             <form action="{{route('songs.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div>
-                    <label for="title" class="form-label">Titel</label>
+                    <label for="title" class="form-label">Titel *</label>
                     <input id="title"
                            type="text"
                            name="title"
@@ -17,7 +23,7 @@
                     @enderror
                 </div>
                 <div>
-                    <label for="artist" class="form-label">Artiest</label>
+                    <label for="artist" class="form-label">Artiest *</label>
                     <input id="artist"
                            type="text"
                            name="artist"
@@ -28,7 +34,7 @@
                     @enderror
                 </div>
                 <div>
-                    <label for="full_song" class="form-label">Volledige nummer</label>
+                    <label for="full_song" class="form-label">Muzieknummer (mp3-bestand) *</label>
                     <input id="full_song"
                            type="file"
                            name="full_song"
@@ -39,7 +45,7 @@
                     @enderror
                 </div>
                 <div>
-                    <label for="image" class="form-label">Afbeelding</label>
+                    <label for="image" class="form-label">Afbeelding *</label>
                     <input id="image"
                            type="file"
                            name="image"
@@ -82,6 +88,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="visibility" class="form-label">Zichtbaarheid (aanvinken betekent zichtbaar voor leden)</label>
                     <div class="col-md-6">
@@ -92,7 +99,7 @@
                 <div>
                     <input id="date" type="hidden" name="date" value="<?php echo date("Y-m-d") ?>">
                 </div>
-                <br><br>
+                <br>
                 <div>
                     <input type="submit" value="Maak muzieknummer aan">
                 </div>

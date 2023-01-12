@@ -18,7 +18,20 @@
                             <div></div>
                         @else
                             <div class="card-image">
-                                <img style="width: 400px;" src="{{ asset('storage/'. $contactPage->image) }}" alt="">
+                                @php
+                                    $fileSize = getimagesize('storage/'. $contactPage->image);
+                                    $width = $fileSize['0'];
+                                    $height = $fileSize['1'];
+                                @endphp
+                                @if($width >= $height)
+                                    <img style="width: 400px;"
+                                         src="{{ asset('storage/'. $contactPage->image) }}"
+                                         alt="Foto van {{$contactPage->title}}">
+                                @else
+                                    <img style="height: 400px;"
+                                         src="{{ asset('storage/'. $contactPage->image) }}"
+                                         alt="Foto van {{$contactPage->title}}">
+                                @endif
                             </div>
                         @endif
                     </div>

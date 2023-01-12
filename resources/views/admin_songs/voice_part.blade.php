@@ -1,8 +1,16 @@
 @extends('layouts.app')
 
+@section('title', 'Stempartij toevoegen')
+
 @section('content')
     <div class="row justify-content-center">
+        @php
+            $song_id = $_GET['id'];
+        @endphp
         <div class="col-md-8">
+            <a href="/admin/songs/{{$song_id}}">< Terug</a>
+            <br><br>
+            <h1>Voeg een stempartij toe</h1>
             <form action="{{route('voice_parts.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div>
@@ -27,13 +35,10 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
-                @php
-                $song_id = $_GET['id'];
-                @endphp
                 <div>
                     <input id="song_id" type="hidden" name="song_id" value="{{ $song_id }}">
                 </div>
-                <br><br>
+                <br>
                 <div>
                     <input type="submit" value="Voeg stempartij toe">
                 </div>

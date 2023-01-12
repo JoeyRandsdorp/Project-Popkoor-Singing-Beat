@@ -1,8 +1,13 @@
 @extends('layouts.app')
 
+@section('title', 'Maak een nieuwe afspeellijst')
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <a href="/playlists">< Terug</a>
+            <br><br>
+            <h1>Maak een playlist</h1>
             <form action="{{route('playlists.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div>
@@ -16,7 +21,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
-                <br><br>
+                <br>
                 <div>
                     <input type="submit" value="Maak afspeellijst">
                 </div>

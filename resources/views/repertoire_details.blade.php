@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Popkoor Singing Beat - Repertoire')
+@section('title', 'Popkoor Singing Beat - ' . $song->title)
 
 @section('content')
     <div class="row justify-content-center">

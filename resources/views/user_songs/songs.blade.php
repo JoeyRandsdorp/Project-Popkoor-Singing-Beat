@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
+@section('title', 'Repertoire')
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <h1>Alle nummers</h1>
+            <h1>Alle muzieknummers</h1>
             <div>
                 <table class="table-bordered" style="width: 100%">
                     <tr>
@@ -16,7 +18,7 @@
                         <tr>
                             <td>{{$song->title}}</td>
                             <td>{{$song->artist}}</td>
-                            <td><a href="/songs/{{$song->id}}">Details</a></td>
+                            <td><a href="/songs/{{$song->id}}" class="btn btn-secondary">Bekijken</a></td>
                             <td><a href="/playlist_song/create?id={{$song->id}}" class="btn btn-success">Voeg toe</a></td>
                         </tr>
                     @endforeach
