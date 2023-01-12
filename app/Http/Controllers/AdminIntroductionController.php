@@ -15,12 +15,6 @@ class AdminIntroductionController extends Controller
         return view('admin_introduction.introduction', ['introductions' => $introductions]);
     }
 
-    public function show($id)
-    {
-        $introduction = Introduction::find($id);
-        return view('admin_introduction.details', ['introduction' => $introduction]);
-    }
-
     public function create()
     {
         return view('admin_introduction.create');

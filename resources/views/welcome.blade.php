@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Popkoor Singing Beat - Welkom')
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -16,7 +18,7 @@
                             <div></div>
                         @else
                             <div class="card-image">
-                                <img style="width: 50%;" src="{{ asset('storage/'. $welcome->image) }}" alt="">
+                                <img style="width: 400px;" src="{{ asset('storage/'. $welcome->image) }}" alt="">
                             </div>
                         @endif
                     </div>

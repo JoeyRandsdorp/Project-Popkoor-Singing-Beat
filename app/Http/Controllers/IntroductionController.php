@@ -12,10 +12,4 @@ class IntroductionController extends Controller
         $introductions = Introduction::all();
         return view('introduction', ['introductions' => $introductions]);
     }
-
-    public function show($id)
-    {
-        $introduction = Introduction::find($id);
-        return view('introduction_details', ['introduction' => $introduction]);
-    }
 }

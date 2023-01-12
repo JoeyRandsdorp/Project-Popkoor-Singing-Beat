@@ -1,20 +1,38 @@
 @extends('layouts.app')
 
+@section('title', 'Popkoor Singing Beat - Fotoalbums')
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <h>{{date('d-m-Y', strtotime($photoAlbum->date))}}: {{$photoAlbum->title}}</h>
+            <a href="/photo_albums">< Terug</a>
+            <br><br>
+            <h1>{{date('d-m-Y', strtotime($photoAlbum->date))}}: {{$photoAlbum->title}}</h1>
             @if(count($photos) < 1)
                 <br><p>Nog geen foto's</p>
             @else
-                <div class="row row-cols-1 row-cols-md-3 g-3">
+                <div class="row row-cols-1 row-cols-md-4 g-4">
                     @foreach($photos as $photo)
-                        <div class="col-mb-3">
-                            <div class="card">
+                        <div class="col-mb-4">
+                            <div class="card h-100">
                                 <div class="card-body">
                                     <div class="card-image">
-                                        <img style="width: 50%;" src="{{ asset('storage/'. $photo->image) }}" alt="{{$photo->title}}">
+                                        @php
+                                            $fileSize = getimagesize('storage/'. $photo->image);
+                                            $width = $fileSize['0'];
+                                            $height = $fileSize['1'];
+                                        @endphp
+                                        @if($width >= $height)
+                                            <img style="width: 150px;"
+                                                 src="{{ asset('storage/'. $photo->image) }}"
+                                                 alt="Foto met titel: {{$photo->title}}">
+                                        @else
+                                            <img style="height: 150px;"
+                                                 src="{{ asset('storage/'. $photo->image) }}"
+                                                 alt="Foto met titel: {{$photo->title}}">
+                                        @endif
                                     </div>
+                                    <br>
                                     <div class="card-title">
                                         <h4>{{$photo->title}}</h4>
                                     </div>
