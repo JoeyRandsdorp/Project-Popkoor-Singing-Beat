@@ -50,6 +50,7 @@ Route::resource('/admin/photos', \App\Http\Controllers\AdminPhotoController::cla
 Route::resource('/admin/contact', \App\Http\Controllers\AdminContactPageController::class)->middleware('admin');
 Route::resource('/admin/archive', \App\Http\Controllers\AdminArchiveController::class)->middleware('admin');
 Route::resource('/admin/sponsors', \App\Http\Controllers\AdminSponsorController::class)->middleware('admin');
+Route::get('/admin/edit_pages', [\App\Http\Controllers\AdminEditPagesController::class, 'index'])->middleware('admin');
 
 //Routes for login
 Auth::routes();

@@ -23,6 +23,7 @@
                 @guest
                     @if(Route::has('login'))
                         <a class="navbar-brand" href="{{ url('/') }}">Popkoor Singing Beat</a>
+
                     @endif
                     @else
                         <a class="navbar-brand" href="{{ url('/home') }}">Popkoor Singing Beat</a>
@@ -34,7 +35,62 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                        @guest
+                            @if(Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/info">Waar, wat & wanneer</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/introduction">Even voorstellen</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/repertoire">Repertoire</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/calendar">Agenda</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/photo_albums">Fotoalbums</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/archive">Archief</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/contact">Contact</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/sponsors">Sponsors</a>
+                                </li>
+                            @endif
+                        @else
+                            @if(auth()->user()?->admin_role === 1)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/admin/posts">Berichten</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/admin/songs">Repertoire leden</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/playlists">Playlists</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/admin/edit_pages">Bewerk openbare pagina's</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/admin/users">Gebruikers</a>
+                                </li>
+                            @else
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/posts">Berichten</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/songs">Repertoire</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/playlists">Playlists</a>
+                                </li>
+                            @endif
+                        @endguest
                     </ul>
 
                     <!-- Right Side Of Navbar -->
