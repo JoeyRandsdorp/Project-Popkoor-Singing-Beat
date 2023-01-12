@@ -18,7 +18,11 @@ class SongToPlaylistController extends Controller
             ->orderByRaw('title ASC')
             ->get();
 
-        return view('playlist_song.create', ['playlists' => $playlists]);
+        if(count($playlists) < 1){
+            return view('playlists.create');
+        } else {
+            return view('playlist_song.create', ['playlists' => $playlists]);
+        }
     }
 
     public function store(Request $request)

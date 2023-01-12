@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\File;
 use App\Models\Song;
+use App\Models\PlaylistSong;
 
 class AdminMusicController extends Controller
 {
@@ -107,6 +108,12 @@ class AdminMusicController extends Controller
 
         $song->title = $request->get('title');
         $song->artist = $request->get('artist');
+
+        if($request->get('visibility') !== 1){
+            $playlist_songs = PlaylistSong::where('song_id', $id);
+            $playlist_songs->delete();
+        }
+
         $song->visibility = $request->get('visibility');
 
         if(request()->file('lyrics') === null){
