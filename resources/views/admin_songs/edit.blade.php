@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
+@section('title', 'Bewerk ' . $song->title)
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <a href="/admin/songs">< Terug</a>
+            <a href="/admin/songs/{{$song->id}}">< Terug</a>
             <br><br>
             <h1>Bewerk het muzieknummer {{$song->title}}</h1>
             <h4>Kies alleen bestanden die je wilt vervangen/toevoegen</h4>
@@ -21,6 +23,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="artist" class="form-label">Artiest</label>
                     <input id="artist"
@@ -32,8 +35,9 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
-                    <label for="full_song" class="form-label">Volledige nummer</label>
+                    <label for="full_song" class="form-label">Muzieknummer (mp3-bestand)</label>
                     <input id="full_song"
                            type="file"
                            name="full_song"
@@ -43,6 +47,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="image" class="form-label">Afbeelding</label>
                     <input id="image"
@@ -54,6 +59,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="lyrics" class="form-label">Songtekst</label>
                     <input id="lyrics"
@@ -65,6 +71,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="translation" class="form-label">Vertaling songtekst</label>
                     <input id="translation"
@@ -76,6 +83,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="sheet_music" class="form-label">Bladmuziek</label>
                     <input id="sheet_music"
@@ -87,6 +95,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="visibility" class="form-label">Zichtbaarheid aanpassen</label>
                     <div class="col-md-6">
@@ -98,6 +107,7 @@
                         @endif
                     </div>
                 </div>
+                <br>
                 <div>
                     <input type="submit" value="Wijzigingen opslaan">
                 </div>

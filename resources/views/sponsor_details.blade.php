@@ -5,6 +5,8 @@
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <a href="/sponsors">< Terug</a>
+            <br><br>
             <div class="card">
                 <div class="card-header">
                     <h1>{{$sponsor->name}}</h1>
@@ -28,9 +30,14 @@
                     </div>
                     <div class="card-text">
                         <p>{!!$sponsor->description!!}</p>
-                        <br>
-                        <a href="{{$sponsor->site}}" target="_blank">Bezoek de site van {{$sponsor->name}}</a>
                     </div>
+                    @if($sponsor->site === null)
+                        <div></div>
+                    @else
+                        <div>
+                            <br><a href="{{$sponsor->site}}" target="_blank">Bezoek de website van {{$sponsor->name}}</a>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

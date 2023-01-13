@@ -7,7 +7,7 @@
         <div class="col-md-8">
             <a href="/admin/songs">< Terug</a>
             <br><br>
-            <h1>Voeg een muzieknummer toe aan het repertoire (voor leden)</h1>
+            <h1>Voeg een muzieknummer toe aan het ledenrepertoire</h1>
             <h4>* = verplicht</h4>
             <form action="{{route('songs.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
@@ -22,6 +22,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="artist" class="form-label">Artiest *</label>
                     <input id="artist"
@@ -33,6 +34,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="full_song" class="form-label">Muzieknummer (mp3-bestand) *</label>
                     <input id="full_song"
@@ -44,6 +46,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="image" class="form-label">Afbeelding *</label>
                     <input id="image"
@@ -55,6 +58,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="lyrics" class="form-label">Songtekst</label>
                     <input id="lyrics"
@@ -66,6 +70,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="translation" class="form-label">Vertaling songtekst</label>
                     <input id="translation"
@@ -77,6 +82,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="sheet_music" class="form-label">Bladmuziek</label>
                     <input id="sheet_music"

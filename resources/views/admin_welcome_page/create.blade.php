@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Maak inhoud voor de welkomtspagina')
+@section('title', 'Maak inhoud voor de welkomstpagina')
 
 @section('content')
     <div class="row justify-content-center">
@@ -22,6 +22,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="description" class="form-label">Tekst op de welkomstpagina *</label>
                     <textarea id="description"
@@ -31,6 +32,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="image" class="form-label">Afbeelding toevoegen voor op de welkomstpagina</label>
                     <input id="image"
@@ -42,7 +44,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
-                <br><br>
+                <br>
                 <div>
                     <input type="submit" value="Plaats op de welkomstpagina">
                 </div>

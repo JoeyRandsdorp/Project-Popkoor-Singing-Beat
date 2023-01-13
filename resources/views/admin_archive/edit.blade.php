@@ -1,8 +1,14 @@
 @extends('layouts.app')
 
+@section('title', 'Bewerk ' . $archive->title)
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <a href="/admin/archive/{{$archive->id}}">< Terug</a>
+            <br><br>
+            <h1>Bewerk '{{$archive->title}}'</h1>
+            <h4>Upload alleen een nieuw bestand als je deze wilt vervangen</h4>
             <form action="{{route('archive.update', $archive->id)}}" method="post" enctype="multipart/form-data">
                 @method('put')
                 @csrf
@@ -17,6 +23,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="description" class="form-label">Omschrijving</label>
                     <textarea id="description"
@@ -26,6 +33,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <div>
                         <label for="date" class="form-label">Datum</label>
@@ -39,6 +47,7 @@
                         @enderror
                     </div>
                 </div>
+                <br>
                 <div>
                     <label for="pdf" class="form-label">PDF-bestand</label>
                     <input id="pdf"
@@ -50,7 +59,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
-                <br><br>
+                <br>
                 <div>
                     <input type="submit" value="Voeg toe aan het archief">
                 </div>

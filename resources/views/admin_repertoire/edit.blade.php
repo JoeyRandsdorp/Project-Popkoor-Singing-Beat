@@ -1,8 +1,14 @@
 @extends('layouts.app')
 
+@section('title', 'Bewerk ' . $song->title)
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <a href="/admin/repertoire/{{$song->id}}">< Terug</a>
+            <br><br>
+            <h1>Bewerk het muzieknummer {{$song->title}}</h1>
+            <h4>Kies alleen bestanden die je wilt vervangen/toevoegen</h4>
             <form action="{{route('repertoire.update', $song->id)}}" method="post" enctype="multipart/form-data">
                 @method('put')
                 @csrf
@@ -17,6 +23,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="artist" class="form-label">Artiest</label>
                     <input id="artist"
@@ -28,6 +35,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="song" class="form-label">Demo</label>
                     <input id="song"
@@ -39,6 +47,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="image" class="form-label">Afbeelding</label>
                     <input id="image"
@@ -50,6 +59,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="visibility" class="form-label">Zichtbaarheid aanpassen</label>
                     <div class="col-md-6">
@@ -61,7 +71,7 @@
                         @endif
                     </div>
                 </div>
-                <br><br>
+                <br>
                 <div>
                     <input type="submit" value="Wijzigingen opslaan">
                 </div>

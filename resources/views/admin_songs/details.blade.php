@@ -21,14 +21,14 @@
                     </div>
                     <br>
                     <div>
-                        <a href="{{route('songs.edit', $song->id)}}" class="btn btn-success btn-sm">Bewerk muzieknummer</a>
+                        <a href="{{route('songs.edit', $song->id)}}" class="btn btn-success btn-sm">Bewerk '{{$song->title}}'</a>
                     </div>
                     <br>
                     <div>
                         <form action="{{route('songs.destroy', $song->id)}}" method="post">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger btn-sm" type="submit">Verwijder muzieknummer</button>
+                            <button class="btn btn-danger btn-sm" type="submit">Verwijder '{{$song->title}}'</button>
                         </form>
                     </div>
                     <hr>
@@ -95,7 +95,7 @@
                                 <tr>
                                     <th>{{$voice_part->title}}</th>
                                     <th>
-                                        <audio controls style="width: 100%;">
+                                        <audio controls style="width: 350px;">
                                             <source src="{{ asset('storage/' . $voice_part->sound) }}" type="audio/mpeg">
                                         </audio>
                                     </th>

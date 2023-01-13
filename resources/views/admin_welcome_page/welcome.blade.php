@@ -34,6 +34,7 @@
                             </form>
                         </div>
                     </div>
+                    <hr>
                     <div class="card-text">
                         <p>{!!$welcome->description!!}</p>
                     </div>

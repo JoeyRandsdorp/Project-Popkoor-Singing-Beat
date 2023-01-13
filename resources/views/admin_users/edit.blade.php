@@ -22,6 +22,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="lastname" class="form-label">Achternaam</label>
                     <input id="lastname"
@@ -33,6 +34,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="email" class="form-label">E-mailadres</label>
                     <input id="email"
@@ -44,6 +46,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="phone" class="form-label">Telefoonnummer</label>
                     <input id="phone"
@@ -55,6 +58,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="admin" class="form-label">Adminrol aan- of uitzetten</label>
 
@@ -67,6 +71,7 @@
                         @endif
                     </div>
                 </div>
+                <br>
                 <div>
                     <label for="post" class="form-label">Postrol aan- of uitzetten</label>
 

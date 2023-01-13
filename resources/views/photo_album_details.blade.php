@@ -32,7 +32,8 @@
                                                  alt="Foto met titel: {{$photo->title}}">
                                         @endif
                                     </div>
-                                    <br>
+                                </div>
+                                <div class="card-footer">
                                     <div class="card-title">
                                         <h4>{{$photo->title}}</h4>
                                     </div>

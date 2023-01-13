@@ -1,9 +1,13 @@
 @extends('layouts.app')
 
+@section('title', 'Fotoalbum: ' . $photoAlbum->title)
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <h1>{{date('d-m-Y', strtotime($photoAlbum->date))}}: {{$photoAlbum->title}}</h1>
+            <a href="/admin/photo_albums">< Terug</a>
+            <br><br>
+            <h1>{{$photoAlbum->title}} op {{date('d-m-Y', strtotime($photoAlbum->date))}}</h1>
             <div class="row row-cols-1 row-cols-md-2 g-2">
                 <div>
                     <a href="{{route('photo_albums.edit', $photoAlbum->id)}}" class="btn btn-success">Bewerk fotoalbum</a>
@@ -12,7 +16,7 @@
                     <form action="{{route('photo_albums.destroy', $photoAlbum->id)}}" method="post">
                         @csrf
                         @method('DELETE')
-                        <button class="btn btn-danger btn-sm" type="submit">Verwijder fotoalbum</button>
+                        <button class="btn btn-danger" type="submit">Verwijder fotoalbum</button>
                     </form>
                 </div>
             </div>
@@ -32,6 +36,7 @@
                         <span>{{$message}}</span>
                         @enderror
                     </div>
+                    <br>
                     <div>
                         <label for="image" class="form-label">Foto</label>
                         <input id="image"
@@ -46,35 +51,50 @@
                     <div>
                         <input id="album_id" type="hidden" name="album_id" value="{{$photoAlbum->id}}">
                     </div>
-                    <br><br>
+                    <br>
                     <div>
                         <input type="submit" value="Voeg foto toe">
                     </div>
                 </form>
             </div>
-            <br>
+            <br><br>
             @if(count($photos) < 1)
                 <p>Nog geen foto's</p>
             @else
                 <div class="row row-cols-1 row-cols-md-3 g-3">
                     @foreach($photos as $photo)
                         <div class="col-mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="card-image">
-                                        <img style="width: 50%;" src="{{ asset('storage/'. $photo->image) }}" alt="{{$photo->title}}">
-                                    </div>
+                            <div class="card h-100">
+                                <div class="card-header">
                                     <div class="card-title">
                                         <h4>{{$photo->title}}</h4>
                                     </div>
-                                    <div class="col">
-                                        <div>
-                                            <form action="{{route('photos.destroy', $photo->id)}}" method="post">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-danger btn-sm" type="submit">Verwijder foto</button>
-                                            </form>
-                                        </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-image">
+                                        @php
+                                            $fileSize = getimagesize('storage/'. $photo->image);
+                                            $width = $fileSize['0'];
+                                            $height = $fileSize['1'];
+                                        @endphp
+                                        @if($width >= $height)
+                                            <img style="width: 150px;"
+                                                 src="{{ asset('storage/'. $photo->image) }}"
+                                                 alt="Foto met titel: {{$photo->title}}">
+                                        @else
+                                            <img style="height: 150px;"
+                                                 src="{{ asset('storage/'. $photo->image) }}"
+                                                 alt="Foto met titel: {{$photo->title}}">
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div>
+                                        <form action="{{route('photos.destroy', $photo->id)}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger btn-sm" type="submit">Verwijder foto</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

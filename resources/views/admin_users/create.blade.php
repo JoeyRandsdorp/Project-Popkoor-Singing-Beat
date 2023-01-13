@@ -22,6 +22,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="lastname" class="form-label">Achternaam</label>
                     <input id="lastname"
@@ -34,6 +35,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="email" class="form-label">E-mailadres</label>
                     <input id="email"
@@ -46,6 +48,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="phone" class="form-label">Telefoonnummer</label>
                     <input id="phone"
@@ -58,6 +61,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="admin" class="form-label">Adminrol aan- of uitzetten</label>
 
@@ -66,6 +70,7 @@
                         <input id="admin" type="checkbox" name="admin" value="1">
                     </div>
                 </div>
+                <br>
                 <div>
                     <label for="post" class="form-label">Postrol aan- of uitzetten</label>
 
@@ -74,6 +79,7 @@
                         <input id="post" type="checkbox" name="post" value="1">
                     </div>
                 </div>
+                <br>
                 <div>
                     <label for="password" class="form-label">Wachtwoord</label>
                     <input id="password"
@@ -85,6 +91,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="password-confirm" class="form-label">Wachtwoord bevestigen</label>
                     <input id="password-confirm"

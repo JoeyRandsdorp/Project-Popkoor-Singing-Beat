@@ -1,12 +1,18 @@
 @extends('layouts.app')
 
+@section('title', 'Voeg een muzieknummer toe')
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <a href="/admin/repertoire">< Terug</a>
+            <br><br>
+            <h1>Voeg een muzieknummer toe aan het bezoekersrepertoire</h1>
+            <h4>* = verplicht</h4>
             <form action="{{route('repertoire.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div>
-                    <label for="title" class="form-label">Titel</label>
+                    <label for="title" class="form-label">Titel *</label>
                     <input id="title"
                            type="text"
                            name="title"
@@ -16,8 +22,9 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
-                    <label for="artist" class="form-label">Artiest</label>
+                    <label for="artist" class="form-label">Artiest *</label>
                     <input id="artist"
                            type="text"
                            name="artist"
@@ -27,8 +34,9 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
-                    <label for="song" class="form-label">Demo</label>
+                    <label for="song" class="form-label">Demo van het nummer</label>
                     <input id="song"
                            type="file"
                            name="song"
@@ -38,6 +46,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="image" class="form-label">Afbeelding</label>
                     <input id="image"
@@ -49,6 +58,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="visibility" class="form-label">Zichtbaarheid (aanvinken betekent zichtbaar voor alle gebruikers)</label>
                     <div class="col-md-6">
@@ -59,7 +69,7 @@
                 <div>
                     <input id="date" type="hidden" name="date" value="<?php echo date("Y-m-d"); ?>">
                 </div>
-                <br><br>
+                <br>
                 <div>
                     <input type="submit" value="Maak muzieknummer aan">
                 </div>

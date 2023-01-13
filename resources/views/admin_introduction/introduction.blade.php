@@ -8,6 +8,9 @@
             <a href="/admin/edit_pages">< Terug</a>
             <br><br>
             <h1>'Even voorstellen'-pagina bewerken</h1>
+            <div class="col">
+                <a href="{{route('introduction.create')}}" class="btn btn-success">Maak een nieuwe introductie</a>
+            </div>
             <br>
             @foreach($introductions as $introduction)
                 <div class="card">
@@ -39,10 +42,12 @@
                         <div class="card-text">
                             <p>{!!$introduction->introduction!!}</p>
                         </div>
-                        <br>
+                        <hr>
                         <div>
                             <div class="col">
-                                <a href="{{route('introduction.edit', $introduction->id)}}" class="btn btn-success">Bewerk introductie</a>
+                                <a href="{{route('introduction.edit', $introduction->id)}}" class="btn btn-success btn-sm">
+                                    Bewerk introductie
+                                </a>
                             </div>
                             <br>
                             <div class="col">

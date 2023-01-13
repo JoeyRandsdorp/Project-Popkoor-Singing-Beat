@@ -78,6 +78,31 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="/admin/users">Gebruikers</a>
                                 </li>
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        Openbare pagina's
+                                    </a>
+                                    <div class="dropdown-menu drop-menu-end" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="/">Welkomstpagina</a>
+                                        <a class="dropdown-item" href="/info">Waar, wat & wanneer</a>
+                                        <a class="dropdown-item" href="/introduction">Even voorstellen</a>
+                                        <a class="dropdown-item" href="/repertoire">Bezoekersrepertoire</a>
+                                        <a class="dropdown-item" href="/calendar">Agenda</a>
+                                        <a class="dropdown-item" href="/photo_albums">Fotoalbums</a>
+                                        <a class="dropdown-item" href="/archive">Archief</a>
+                                        <a class="dropdown-item" href="/contact">Contact</a>
+                                        <a class="dropdown-item" href="/sponsors">Sponsors</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        Ledenpagina's
+                                    </a>
+                                    <div class="dropdown-menu drop-menu-end" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="/posts">Berichten ledenpagina</a>
+                                        <a class="dropdown-item" href="/songs">Ledenrepertoire</a>
+                                    </div>
+                                </li>
                             @else
                                 @if(auth()->user()?->post_role === 1)
                                     <li class="nav-item">
@@ -93,6 +118,23 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/playlists">Playlists</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        Openbare pagina's
+                                    </a>
+
+                                    <div class="dropdown-menu drop-menu-end" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="/">Welkomstpagina</a>
+                                        <a class="dropdown-item" href="/info">Waar, wat & wanneer</a>
+                                        <a class="dropdown-item" href="/introduction">Even voorstellen</a>
+                                        <a class="dropdown-item" href="/repertoire">Bezoekersrepertoire</a>
+                                        <a class="dropdown-item" href="/calendar">Agenda</a>
+                                        <a class="dropdown-item" href="/photo_albums">Fotoalbums</a>
+                                        <a class="dropdown-item" href="/archive">Archief</a>
+                                        <a class="dropdown-item" href="/contact">Contact</a>
+                                        <a class="dropdown-item" href="/sponsors">Sponsors</a>
+                                    </div>
                                 </li>
                             @endif
                         @endguest

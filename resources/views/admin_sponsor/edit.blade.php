@@ -1,8 +1,14 @@
 @extends('layouts.app')
 
+@section('title', 'Bewerk: ' . $sponsor->name)
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <a href="/admin/sponsors/{{$sponsor->id}}">< Terug</a>
+            <br><br>
+            <h1>Bewerk {{$sponsor->name}}</h1>
+            <h4>Kies alleen een foto als je die wilt vervangen</h4>
             <form action="{{route('sponsors.update', $sponsor->id)}}" method="post" enctype="multipart/form-data">
                 @method('put')
                 @csrf
@@ -18,6 +24,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="description" class="form-label">Stuk tekst over de sponsor</label>
                     <textarea id="description"
@@ -27,6 +34,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="image" class="form-label">Logo van sponsor</label>
                     <input id="image"
@@ -38,6 +46,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="site" class="form-label">Website van sponsor</label>
                     <input id="site"
@@ -50,6 +59,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <input type="submit" value="Sponsor aanmaken">
                 </div>

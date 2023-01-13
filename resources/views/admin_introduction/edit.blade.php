@@ -1,8 +1,14 @@
 @extends('layouts.app')
 
+@section('title', 'Introductie van ' . $introduction->name . ' bewerken')
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <a href="/admin/introduction">< Terug</a>
+            <br><br>
+            <h1>Bewerk de introductie van {{$introduction->name}}</h1>
+            <h4>Upload alleen een nieuwe foto als je deze wilt vervangen</h4>
             <form action="{{route('introduction.update', $introduction->id)}}" method="post" enctype="multipart/form-data">
                 @method('put')
                 @csrf
@@ -17,6 +23,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="function" class="form-label">Functie in het popkoor</label>
                     <input id="function"
@@ -28,6 +35,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="introduction" class="form-label">Introductietekst</label>
                     <input id="introduction"
@@ -39,8 +47,9 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
-                    <label for="image" class="form-label">Foto</label>
+                    <label for="image" class="form-label">Profielfoto</label>
                     <input id="image"
                            type="file"
                            name="image"
@@ -50,7 +59,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
-                <br><br>
+                <br>
                 <div>
                     <input type="submit" value="Bewerk introductie">
                 </div>

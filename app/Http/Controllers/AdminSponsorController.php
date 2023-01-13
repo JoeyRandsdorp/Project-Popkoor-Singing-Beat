@@ -31,8 +31,7 @@ class AdminSponsorController extends Controller
         $request->validate([
             'name' => 'required', 'string', 'max:255',
             'description' => 'required', 'string',
-            'image' => 'required', File::types(['gif', 'GIF', 'jpeg', 'JPEG', 'jpg', 'JPG', 'png', 'PNG']),
-            'site' => 'string'
+            'image' => 'required', File::types(['gif', 'GIF', 'jpeg', 'JPEG', 'jpg', 'JPG', 'png', 'PNG'])
         ]);
 
         if(request()->file('image') === null){
@@ -65,8 +64,7 @@ class AdminSponsorController extends Controller
         $request->validate([
             'name' => 'required', 'string', 'max:255',
             'description' => 'required', 'string',
-            'image' => File::types(['gif', 'GIF', 'jpeg', 'JPEG', 'jpg', 'JPG', 'png', 'PNG']),
-            'site' => 'required', 'string'
+            'image' => File::types(['gif', 'GIF', 'jpeg', 'JPEG', 'jpg', 'JPG', 'png', 'PNG'])
         ]);
 
         $sponsor = Sponsor::find($id);

@@ -1,12 +1,18 @@
 @extends('layouts.app')
 
+@section('title', 'Voeg toe aan het archief')
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <a href="/admin/archive">< Terug</a>
+            <br><br>
+            <h1>Voeg een onderdeel toe aan het archief</h1>
+            <h4>* = verplicht</h4>
             <form action="{{route('archive.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div>
-                    <label for="title" class="form-label">Titel</label>
+                    <label for="title" class="form-label">Titel *</label>
                     <input id="title"
                            type="text"
                            name="title"
@@ -16,8 +22,9 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
-                    <label for="description" class="form-label">Omschrijving</label>
+                    <label for="description" class="form-label">Omschrijving *</label>
                     <textarea id="description"
                               name="description"
                               class="@error('description') is-invalid @enderror form-control">{{old('description')}}</textarea>
@@ -25,9 +32,10 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <div>
-                        <label for="date" class="form-label">Datum</label>
+                        <label for="date" class="form-label">Datum *</label>
                         <input id="date"
                                type="date"
                                name="date"
@@ -38,8 +46,9 @@
                         @enderror
                     </div>
                 </div>
+                <br>
                 <div>
-                    <label for="pdf" class="form-label">PDF-bestand</label>
+                    <label for="pdf" class="form-label">PDF-bestand *</label>
                     <input id="pdf"
                            type="file"
                            name="pdf"
@@ -49,7 +58,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
-                <br><br>
+                <br>
                 <div>
                     <input type="submit" value="Voeg toe aan het archief">
                 </div>

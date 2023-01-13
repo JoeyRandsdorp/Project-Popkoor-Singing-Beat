@@ -1,8 +1,13 @@
 @extends('layouts.app')
 
+@section('title', 'Bewerk het fotoalbum: ' . $photoAlbum->title)
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <a href="/admin/photo_albums/{{$photoAlbum->id}}">< Terug</a>
+            <br><br>
+            <h1>Bewerk het fotoalbum '{{$photoAlbum->title}}'</h1>
             <form action="{{route('photo_albums.update', $photoAlbum->id)}}" method="post" enctype="multipart/form-data">
                 @method('put')
                 @csrf
@@ -17,6 +22,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="title" class="form-label">Titel</label>
                     <input id="title"
@@ -28,6 +34,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="description" class="form-label">Omschrijving</label>
                     <input id="description"
@@ -39,7 +46,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
-                <br><br>
+                <br>
                 <div>
                     <input type="submit" value="Wijzigingen opslaan">
                 </div>

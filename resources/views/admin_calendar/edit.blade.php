@@ -1,8 +1,13 @@
 @extends('layouts.app')
 
+@section('title', 'Bewerk agendapunt')
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <a href="/admin/calendar">< Terug</a>
+            <br><br>
+            <h1>Bewerk het agendapunt {{$calendar->title}}</h1>
             <form action="{{route('calendar.update', $calendar->id)}}" method="post" enctype="multipart/form-data">
                 @method('put')
                 @csrf
@@ -17,6 +22,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="start_time" class="form-label">Begintijd</label>
                     <input id="start_time"
@@ -28,6 +34,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="end_time" class="form-label">Eindtijd</label>
                     <input id="end_time"
@@ -39,6 +46,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="title" class="form-label">Titel</label>
                     <input id="title"
@@ -50,6 +58,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="description" class="form-label">Beschrijving</label>
                     <input id="description"
@@ -61,6 +70,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="place" class="form-label">Plaats</label>
                     <input id="place"
@@ -72,7 +82,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
-                <br><br>
+                <br>
                 <div>
                     <input type="submit" value="Wijzigingen opslaan">
                 </div>

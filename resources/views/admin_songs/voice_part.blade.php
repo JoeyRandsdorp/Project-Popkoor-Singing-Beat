@@ -24,6 +24,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="sound" class="form-label">Stempartij muziek</label>
                     <input id="sound"

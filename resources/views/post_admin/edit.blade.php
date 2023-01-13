@@ -21,6 +21,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="description" class="form-label">Bijschrift bericht</label>
                     <input id="description"
@@ -32,6 +33,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="thumbnail" class="form-label">Afbeelding toevoegen</label>
                     <input id="thumbnail"
@@ -43,6 +45,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="video" class="form-label">Video toevoegen</label>
                     <input id="video"
@@ -54,6 +57,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="file" class="form-label">Bestand toevoegen</label>
                     <input id="file"
@@ -65,6 +69,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="comments" class="form-label">Comments aan- of uitzetten</label>
 
@@ -77,6 +82,7 @@
                         @endif
                     </div>
                 </div>
+                <br>
                 <div>
                     <label for="pinned" class="form-label">Zet bericht bovenaan vast</label>
 

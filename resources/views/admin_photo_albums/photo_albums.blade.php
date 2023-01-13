@@ -1,18 +1,28 @@
 @extends('layouts.app')
 
+@section('title', 'Fotoalbums admin')
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <a href="/admin/edit_pages">< Terug</a>
+            <br><br>
             <h1>Alle fotoalbums</h1>
+            <div class="col">
+                <a href="{{route('photo_albums.create')}}" class="btn btn-success">
+                    Maak een nieuw fotoalbum
+                </a>
+            </div>
+            <br>
             <div>
                 <table class="table-bordered" style="width: 100%">
                     <tr>
                         <th>Fotoalbum</th>
-                        <th>Foto's</th>
+                        <th>Aantal foto's</th>
                         <th>Omschrijving</th>
                         <th>Datum</th>
                         <th>Bekijken</th>
-                        <th>Verwijder fotoalbum</th>
+                        <th>Verwijderen</th>
                     </tr>
                     @foreach($photoAlbums as $photoAlbum)
                         <tr>

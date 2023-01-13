@@ -12,10 +12,12 @@
                 @foreach($posts as $post)
                     <div class="col-mb-3">
                         <div class="card h-100">
-                            <div class="card-body">
+                            <div class="card-header">
                                 <div class="card-title">
                                     <h4>{{$post->title}}</h4>
                                 </div>
+                            </div>
+                            <div class="card-body">
                                 <div class="card-image">
                                     @php
                                         $fileSize = getimagesize('storage/'. $post->thumbnail);
@@ -35,9 +37,10 @@
                                 <br>
                                 <div class="card-text">
                                     <p>{!! \Illuminate\Support\Str::limit($post->description, 50) !!}</p>
-                                    <br>
-                                    <a href="{{route('posts.show', $post->id)}}" class="btn btn-success btn-sm">Details</a>
                                 </div>
+                            </div>
+                            <div class="card-footer">
+                                <a href="{{route('posts.show', $post->id)}}" class="btn btn-success btn-sm">Details</a>
                             </div>
                         </div>
                     </div>

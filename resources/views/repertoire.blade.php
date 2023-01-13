@@ -12,16 +12,19 @@
                 @foreach($songs as $song)
                     <div class="col-mb-4">
                         <div class="card h-100">
-                            <div class="card-body">
+                            <div class="card-header">
                                 <div class="card-title">
                                     <h5 style="text-align: center">{{$song->artist}} - {{$song->title}}</h5>
                                 </div>
+                            </div>
+                            <div class="card-body">
                                 <div class="card-img">
                                     <img style="display: block; width: 150px; margin-left: auto; margin-right: auto"
                                          src="{{ asset('storage/' . $song->image) }}"
                                          alt="Albumcover van {{$song->title}} door {{$song->name}}">
                                 </div>
-                                <br>
+                            </div>
+                            <div class="card-footer">
                                 <div class="card-text">
                                     <a href="/repertoire/{{$song->id}}"
                                        class="btn btn-success btn-sm"

@@ -1,12 +1,18 @@
 @extends('layouts.app')
 
+@section('title', 'Maak een nieuw fotoalbum')
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <a href="/admin/photo_albums">< Terug</a>
+            <br><br>
+            <h1>Maak een nieuw fotoalbum aan</h1>
+            <h4>* = verplicht</h4>
             <form action="{{route('photo_albums.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div>
-                    <label for="date" class="form-label">Datum</label>
+                    <label for="date" class="form-label">Datum *</label>
                     <input id="date"
                            type="date"
                            name="date"
@@ -16,8 +22,9 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
-                    <label for="title" class="form-label">Titel</label>
+                    <label for="title" class="form-label">Titel *</label>
                     <input id="title"
                            type="text"
                            name="title"
@@ -27,8 +34,9 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
-                    <label for="description" class="form-label">Omschrijving</label>
+                    <label for="description" class="form-label">Omschrijving *</label>
                     <input id="description"
                            type="text"
                            name="description"
@@ -38,7 +46,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
-                <br><br>
+                <br>
                 <div>
                     <input type="submit" value="Maak fotoalbum aan">
                 </div>

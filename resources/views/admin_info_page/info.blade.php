@@ -30,6 +30,7 @@
                                 </form>
                             </div>
                         </div>
+                        <hr>
                         <div class="card-text">
                             <p>{!!$info->description!!}</p>
                         </div>

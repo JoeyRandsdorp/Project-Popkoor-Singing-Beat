@@ -23,6 +23,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="description" class="form-label">Tekst op de informatiepagina</label>
                     <input id="description"
@@ -34,6 +35,7 @@
                     <span>{{$message}}</span>
                     @enderror
                 </div>
+                <br>
                 <div>
                     <label for="image" class="form-label">Afbeelding toevoegen voor op de informatiepagina</label>
                     <input id="image"
