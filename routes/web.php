@@ -34,7 +34,7 @@ Route::resource('/playlist_song', \App\Http\Controllers\SongToPlaylistController
 Route::match(["get", "delete"], '/playlist_song/{playlist_id}/{song_id}', [\App\Http\Controllers\SongToPlaylistController::class, 'destroy'])->name('delete-song-playlist')->middleware('auth');
 
 //Members with post_role
-Route::resource('/admin/posts', \App\Http\Controllers\AdminPostController::class)->middleware('post_role')->middleware('admin');
+Route::resource('/admin/posts', \App\Http\Controllers\AdminPostController::class)->middleware('post_role');
 
 //Admin access only
 Route::resource('/admin/users', \App\Http\Controllers\AdminUsersController::class)->middleware('admin');
