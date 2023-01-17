@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\File;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Comment;
 use Michelf\Markdown;
 
 class AdminPostController extends Controller
@@ -227,6 +228,9 @@ class AdminPostController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
+        $comments = Comment::where('post_id', $id);
+
+        $comments->delete();
         $post->delete();
         return redirect()->route('posts.index');
     }

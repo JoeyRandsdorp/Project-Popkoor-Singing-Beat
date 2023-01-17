@@ -80,10 +80,10 @@ class AdminPhotoAlbumController extends Controller
     public function destroy($id)
     {
         $photoAlbum = PhotoAlbum::find($id);
-        $photos = $this->getPhotos($id);
+        $photos = Photo::where('photo_album_id', $id);
 
-        $photoAlbum->delete();
         $photos->delete();
+        $photoAlbum->delete();
         return redirect()->route('photo_albums.index');
     }
 }
